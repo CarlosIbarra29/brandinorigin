@@ -1,0 +1,584 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18/09/2019, 01:43:26 PM
+    Author     : 3A BRANDING
+*/
+
+
+
+
+
+
+body{
+    font-family: Montserrat, sans-serif;
+    letter-spacing: 0;
+}
+
+.container-fluid {
+    padding: 10px 50px;
+}
+
+
+
+h2 {
+    text-transform: uppercase;
+    color: #3c3c3c;
+    margin-bottom: 30px;
+}
+
+.jumbotron {
+    background-color: #fff;
+    color: #3c3c3c;
+    padding: 60px 50px 0px 50px;
+
+}
+
+
+.logo-small {
+    color: #f4511e;
+    font-size: 50px;
+}
+.logo {
+    padding: 5px;
+}
+
+
+.thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+}
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+}
+.carousel-control.right, .carousel-control.left {
+    background-image: none;
+    color: #3c3c3c;
+}
+.carousel-indicators li {
+    border-color: #a3091b;
+}
+.carousel-indicators li.active {
+    background-color: #a3091b;
+}
+
+.panel {
+    border:1px solid #CCCCCC;
+    height: 350px;
+    width: 250px;
+    margin-bottom: 10px;
+    transition: box-shadow 0.5s;
+    background-color: transparent;
+}
+.panel:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+}
+.panel-footer .btn:hover {
+    border: 1px solid red;
+    background-color: #fff !important;
+    color: red;
+}
+.panel-heading {
+    color: #fff !important;
+    background-color: transparent !important;
+    padding: 10px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.panel-footer {
+    background-color: white !important;
+}
+.panel-footer h3 {
+    font-size: 32px;
+}
+.panel-footer h4 {
+    color: #aaa;
+    font-size: 14px;
+}
+.panel-footer .btn {
+    margin: 15px 0;
+    background-color: red;
+    color: #fff;
+}
+.navbar {
+    margin-bottom: 0;
+    background-color: #fff;
+    border: 0;
+
+    padding: 1px;
+}
+.navbar li a, .navbar .navbar-brand {
+    color: #000 !important;
+}
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #a3091b !important;
+}
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
+footer .glyphicon {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #3c3c3c;
+}
+.slideanim {visibility:hidden;}
+.slide {
+    animation-name: slide;
+    -webkit-animation-name: slide;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    visibility: visible;
+}
+@keyframes slide {
+    0% {
+        opacity: 0;
+        transform: translateY(70%);
+    } 
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+@-webkit-keyframes slide {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(70%);
+    } 
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0%);
+    }
+}
+@media screen and (max-width: 768px) {
+    .col-sm-4 {
+        text-align: center;
+        margin: 25px 0;
+    }
+    .btn-lg {
+        width: 100%;
+        margin-bottom: 35px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .logo {
+        font-size: 150px;
+    }
+}
+
+
+.barra_menu{
+    background-color: #3c3c3c;
+}
+.contenido_barra{
+    font-size: 15px; 
+    color: #FFF;
+}
+
+.enlace_tel{
+    color: gray;
+}
+
+.productos_destacados{
+    padding: 10px;
+}
+
+.destacado{
+    color: #a3091b;
+}
+
+.color_badge{
+    background-color: red;
+}
+
+.descripcion{
+    font-size: 12px;
+}
+
+.paleta_color{
+    border-color: transparent;
+    background-color: red;
+    border-radius: 50%;  
+    height: 15px; 
+    width: 15px;
+}
+
+
+.carousel_e{
+    color: #3c3c3c;
+}
+
+.footer_color{
+    background-color: #FF0000;
+    color: white;
+    padding: 10px 10px 10px 10px;
+}
+
+.hr_p{
+    border: 0; 
+    height: 1px; 
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.filtro{
+    padding: 2%;
+}
+
+
+/*acordeon*/
+
+.block {
+    width:150%;
+    float:left;
+    margin-bottom:1px;
+}
+
+.block h2 {
+    font-size: 12px;
+    width:100%;
+    float:left;
+    background-color:#3c3c3c;
+    color:#FFFFFF;
+    cursor:pointer;
+    margin:0px;
+    padding:2px;
+}
+
+.block h2:hover{
+    background-color: #a3091b;
+}
+
+.block li:hover{
+    color: #000;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+.block ul {
+    width:100%;
+    float:left;
+    margin: 0;
+    padding: 0;
+    display:none;
+}
+
+.block ul li {
+    font-size: 12px;
+    background-color: #ccc;
+    border-bottom: 1px solid #a3091b;
+    list-style: none outside none;
+    padding: 5px;
+    width: 100%;
+}
+
+
+/*colores circulo*---*/
+
+.button5 {
+    border-radius: 50%;
+}
+
+.button2 {
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+/*------imagenes zoomm*/
+.mag {
+    width:300px;
+    margin: 0 auto;
+    float: none;
+}
+
+.mag img {
+    max-width: 100%;
+}
+
+
+
+.magnify {
+    position: relative;
+    cursor: none
+}
+
+.magnify-large {
+    position: absolute;
+    display: none;
+    width: 175px;
+    height: 175px;
+
+    -webkit-box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.85), 0 0 7px 7px rgba(0, 0, 0, 0.25), inset 0 0 40px 2px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.85), 0 0 7px 7px rgba(0, 0, 0, 0.25), inset 0 0 40px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.85), 0 0 7px 7px rgba(0, 0, 0, 0.25), inset 0 0 40px 2px rgba(0, 0, 0, 0.25);
+
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%
+}
+
+.img_pos{
+    padding-top: 50px;
+}
+
+
+/*estilo input file*/
+.thumb{
+    height: 100%;
+    margin: 10px 5px 0 0;
+}
+
+.posicion_modal{
+    padding-top: 80px;
+}
+
+.button {
+    display: inline-block;
+    padding: 1px 30px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #ec1a22;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3c3c3c}
+
+.button:active {
+    background-color: #3c3c3c;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.item_color{
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+
+.link_cat{
+    color:#a3091b;
+}
+
+
+.list-group-horizontal .list-group-item {
+    display: inline-block;
+}
+.list-group-horizontal .list-group-item {
+    margin-bottom: 0;
+    margin-left:-4px;
+    margin-right: 0;
+}
+.list-group-horizontal .list-group-item:first-child {
+    border-top-right-radius:0;
+    border-bottom-left-radius:4px;
+}
+.list-group-horizontal .list-group-item:last-child {
+    border-top-right-radius:4px;
+    border-bottom-left-radius:0;
+}
+
+
+
+.dropdown_filtro, li:hover ,a:hover{
+    background-color: transparent;
+}
+
+.productos{
+    color: #3c3c3c;
+    width: 100%;
+    text-align: center;
+
+
+}
+
+.barra_productos{
+    background-color: #fff;
+    border-color: #3c3c3c;
+    color: white;
+    padding: 1px;
+}
+
+
+
+.hr_imagen{
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 0, 0, 0), rgba(255, 0,0, 0.75), rgba(255, 0, 0, 0));
+}
+
+.texto_banner{
+    top: 180px;
+
+}
+
+.fondo_banner{
+    color: #3c3c3c;
+    font-weight: bold;
+    padding: 1px 10px 1px 10px;
+    background: rgba(255,255,255, 0.6);  
+}
+
+
+
+
+/*texto en general*/
+.texto{
+    font-size: small;
+    color: red;
+}
+
+.container_iconos{
+    padding: 30px;
+}
+
+
+.fondo_banner_promo{
+
+
+    height: 370px;
+    padding-top: 220px;
+    padding-left: 150px;  
+}
+
+.cont{
+    background-color: orange;
+    padding: 30px 100px 10px 5px;
+    background: url(../promos/bann.jpg);
+    background-repeat: no-repeat;
+    background-size: 1280px;
+}
+
+.bg-grey{
+     background-color: #f6f6f6;
+}
+
+
+.panel-login {
+	border-color: #ccc;
+	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+}
+.panel-login>.panel-heading {
+	color: #00415d;
+	background-color: #fff;
+	border-color: #fff;
+	text-align:center;
+}
+.panel-login>.panel-heading a{
+	text-decoration: none;
+	color: #666;
+	font-weight: bold;
+	font-size: 12px;
+	-webkit-transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+.panel-login>.panel-heading a.active{
+	color: #029f5b;
+	font-size: 14px;
+}
+.panel-login>.panel-heading hr{
+	margin-top: 10px;
+	margin-bottom: 0px;
+	clear: both;
+	border: 0;
+	height: 1px;
+	background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
+	background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+	background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+	background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+}
+.panel-login input[type="text"],.panel-login input[type="email"],.panel-login input[type="password"],.panel-login input[type="number"] {
+	height: 30px;
+	border: 1px solid #ddd;
+	font-size: 12px;
+	-webkit-transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+.panel-login input:hover,
+.panel-login input:focus {
+	outline:none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	border-color: #ccc;
+}
+.btn-login {
+	background-color: #59B2E0;
+	outline: none;
+	color: #fff;
+	font-size: 12px;
+	height: auto;
+	font-weight: normal;
+	padding: 10px 0;
+	text-transform: uppercase;
+	border-color: #59B2E6;
+}
+.btn-login:hover,
+.btn-login:focus {
+	color: #fff;
+	background-color: #53A3CD;
+	border-color: #53A3CD;
+}
+.forgot-password {
+	text-decoration: underline;
+	color: #888;
+}
+.forgot-password:hover,
+.forgot-password:focus {
+	text-decoration: underline;
+	color: #666;
+}
+
+.btn-register {
+	background-color: #1CB94E;
+	outline: none;
+	color: #fff;
+	font-size: 12px;
+	height: auto;
+	font-weight: normal;
+	padding: 10px 0;
+	text-transform: uppercase;
+	border-color: #1CB94A;
+}
+.btn-register:hover,
+.btn-register:focus {
+	color: #fff;
+	background-color: #1CA347;
+	border-color: #1CA347;
+}
+
+.panel2 {
+    border:1px solid #CCCCCC;
+
+    margin-bottom: 10px;
+    transition: box-shadow 0.5s;
+    background-color: transparent;
+}
+.panel2:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+}
