@@ -8,6 +8,6 @@ define('DB_SERVER_PASSWORD', '3abranding_root');
 define('DB_DATABASE', 'abrandin_3A');
 define('NUM_ITEMS_BY_PAGE',9);
 
-$conexion = new mysqli(DB_SERVER, DB_SERVER_USERNAME, DB_SERVER_PASSWORD, DB_DATABASE);
+$conexion_uno = new mysqli(DB_SERVER, DB_SERVER_USERNAME, DB_SERVER_PASSWORD, DB_DATABASE);
 
 

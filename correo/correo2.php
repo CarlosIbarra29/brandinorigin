@@ -1,5 +1,6 @@
 
 <?php
+
 echo $destinatario = 'ubonilla@3abranding.com.mx';
 $asunto = "Nuevo Registro 3A BRANDING";
 $cuerpo = "
@@ -17,7 +18,8 @@ $cuerpo = "
     <body>
 
          <div class='jumbotron text-center'>
-            <img src='http://3abranding.com.mx/3abranding/logos/logo_3a.png' height='50px'><h2>3A BRANDING GROUP</h2>
+            
+            <img src='http://3abranding.com/logos/logo_3a.png' height='50px'><h2>3A BRANDING GROUP</h2>
         </div>
 
         <div class='container'>
@@ -56,11 +58,11 @@ $headers .= "Reply-To: factura@3abranding.com\r\n";
 $headers .= "Return-path: factura@3abranding.com\r\n";
 
 //direcciones que recibirÃ¡n copia oculta
-$headers .= "Bcc: ubonilla@3abranding.com.mx\r\n";
+$headers .= "Bcc: ubonilla09@gmail.com\r\n";
 
 $headers .= "Bcc: contacto@3abranding.com\r\n";
 
-mail($destinatario, $asunto, $cuerpo, $headers);
+$correo= mail($destinatario, $asunto, $cuerpo, $headers);
 
 
 

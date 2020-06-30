@@ -30,6 +30,9 @@ include './php/session_start.php';
 
 $articulos = $_GET['num_ar'];
 $us= $_GET['us'];
+
+
+
 ?>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">

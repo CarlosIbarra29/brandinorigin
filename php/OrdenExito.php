@@ -1,11 +1,30 @@
 <?php
+
 if (!isset($_REQUEST['id'])) {
+
     header("Location: VerCarta.php");
 }
+
+
 $nom=$_GET['n'];
 $c = $_GET['e'];
 $id= $_GET['id'];
+
+
 include '../correo/correo.php';
+
+$envio = envioCotizacion($c,$id,$nom);
+
+
+$validaEnvio= $envio['correo'];
+
+/*if ($validaEnvio="false"){
+
+    echo "No notifico";
+
+}else{
+    */
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +57,7 @@ include '../correo/correo.php';
 
         <div class="row">
             <div class="col-sm-12  text-center" style="padding-top:100px">
-                <h3><?php echo $envio?></h3>
+                <h3><?php //echo $envio?></h3>
                 <div class="spinner-grow text-primary" role="status">
                     <span class="sr-only">Loading...</span>
                 </div>
@@ -71,6 +90,8 @@ include '../correo/correo.php';
 ob_start();
  header('refresh: 4; url = http://3abranding.com');
 ob_end_flush();
+
+//}
 
 
 

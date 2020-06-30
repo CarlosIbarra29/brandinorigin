@@ -1,7 +1,36 @@
 <?php
 include '../conexion/conexion2.php';
 
+function fnConexion(){
 
+    define('DB_SERVER','209.59.139.98');
+    define('DB_SERVER_USERNAME', 'abrandin_root');
+    define('DB_SERVER_PASSWORD', '3abranding_root');
+    define('DB_DATABASE', 'abrandin_3A');
+    define('NUM_ITEMS_BY_PAGE',9);
+
+    $conexion_uno = new mysqli(DB_SERVER, DB_SERVER_USERNAME, DB_SERVER_PASSWORD, DB_DATABASE);
+
+    if (mysqli_connect_errno()) {
+    
+        printf("Connect failed: %s\n", mysqli_connect_error());
+        exit();
+
+    }
+
+    if (!$conexion_uno->set_charset("utf8")) {
+
+        printf("Error loading character set utf8: %s\n", $conexion_uno->error);
+
+    } else {
+
+       // printf("Current character set: %s\n", $conexion_uno->character_set_name());
+
+    }
+
+    return $conexion_uno;
+
+}
 
 function fnPrecios($tecnica,$productID,$unidades,$precio_inicio){
 
@@ -287,8 +316,15 @@ function fnPrecios($tecnica,$productID,$unidades,$precio_inicio){
 
     $precio = $calculo_total;
     $precio_uni = $calculo_p;
-    $sql="SELECT nombre, modelo FROM productos WHERE modelo = '$productID' ";
+    //$sql="SELECT nombre, modelo FROM productos WHERE modelo = '$productID' ";
 
+    $sql = "SELECT  
+    A.modelo,
+    B.nombre 
+    FROM 
+    precios_promoopcion A 
+    JOIN prod_promoopcion B ON A.modelo = B.modelo
+    WHERE B.modelo='$productID'";
     $query = $conexion->query($sql);
     $row = $query->fetch_assoc();
     $id = $row['modelo'];
@@ -311,7 +347,6 @@ function fnPrecios($tecnica,$productID,$unidades,$precio_inicio){
 
     return $itemData;   
 }
-
 
 function fnInsertarOrden($session,$cart,$fecha,$nom,$tel,$correo){
 
@@ -367,6 +402,214 @@ function fnInsertarOrden($session,$cart,$fecha,$nom,$tel,$correo){
 		header("Location: Pagos.php");
 		echo "no inserta";
 	}
+}
+
+
+function fnGetproductosPrincipal(){
+
+    $conexion_uno = fnConexion();
+
+    $aResponse = array();
+
+    $sql ="SELECT 
+    B.id_producto,
+    A.precio,
+    B.modelo,
+    B.img
+    FROM precios_promoopcion A 
+    JOIN bran_productos B ON A.modelo = B.modelo
+
+    WHERE B.categoria ='ACC COMPUTO' ORDER BY RAND() LIMIT 12";
+
+    if($query = mysqli_query($conexion_uno, $sql)){
+
+        if(mysqli_num_rows($query)>0){
+
+            while( $row = mysqli_fetch_array($query) ) { 
+
+                $aResponse[] = $row; 
+
+            }
+
+        }
+
+    }
+
+    return $aResponse;
+
+}
+
+function fnGetWebService($id){
+
+    include './libreria/lib/nusoap.php';
+
+    $CardCode = 'DFE5737';
+
+    $client = new nusoap_client('http://desktop.promoopcion.com:8095/wsFullFilmentMX/FullFilmentMX.asmx?wsdl','wsdl');
+
+    $err = $client->getError();
+
+    if ($err) {     
+
+        echo 'Error en Constructor' . $err ;
+    }
+
+    $param = array('codigo' => $id,'distribuidor' => $CardCode);
+
+    $fichaTecnica = $client->call('fichaTecnica', $param);
+
+    return $fichaTecnica;
+
+}
+
+
+function fnGetImg($id_img){
+
+    $conexion_uno = fnConexion();
+
+    $aResponse = array();
+
+
+    $sql="SELECT B.img
+
+    FROM precios_promoopcion A 
+
+    JOIN bran_productos B ON A.modelo = B.modelo
+
+    WHERE B.modelo ='$id_img';
+
+
+    ";
+
+    if($query = mysqli_query($conexion_uno, $sql)){
+
+        if(mysqli_num_rows($query)>0){
+
+            while( $row = mysqli_fetch_array($query) ) { 
+
+                $aResponse[] = $row; 
+
+            }
+
+        }
+
+    }
+
+    return $aResponse;
+
+}
+
+
+function fnGetproducto($id){
+
+    $conexion_uno = fnConexion();
+
+    $aResponse = array();
+
+    $sql ="SELECT B.*,
+    A.precio
+
+    FROM precios_promoopcion A 
+    JOIN bran_productos B ON A.modelo = B.modelo
+
+    WHERE B.modelo ='$id'  limit 1";
+
+    if($query = mysqli_query($conexion_uno, $sql)){
+
+        if(mysqli_num_rows($query)>0){
+
+            while( $row = mysqli_fetch_array($query) ) { 
+
+                $aResponse[] = $row; 
+
+            }
+
+        }
+
+    }
+
+    return $aResponse;
+
+}
+
+
+function fnGetCategoriasP(){
+
+    $conexion_uno = fnConexion();
+    $catResponse = array();
+    $sql ="SELECT
+
+    C.nombre_cat,
+    C.img_cat
+    -- distinct 
+    -- A.categoria
+    -- FROM bran_productos A
+    FROM categorias C
+    ORDER BY RAND()
+    LIMIT 18";
+
+    if($query = mysqli_query($conexion_uno, $sql)){
+
+        if(mysqli_num_rows($query)>0){
+
+            while( $row=mysqli_fetch_array($query) ) { $catResponse[] = $row; }
+        }
+    }
+    
+    return $catResponse;
+}
+
+
+function fnGetColores($id){
+
+    $conexion_uno = fnConexion();
+
+    $aResponse = array();
+
+    $sql ="SELECT B.color FROM bran_productos B WHERE B.modelo ='$id';";
+
+    if($query = mysqli_query($conexion_uno, $sql)){
+
+        if(mysqli_num_rows($query)>0){
+
+            while( $row = mysqli_fetch_array($query) ) { 
+
+                $aResponse[] = $row; 
+
+            }
+
+        }
+
+    }
+
+    return $aResponse;
+
+}
+
+function fnGetTecnica($id){
+
+    $conexion_uno = fnConexion();
+
+    $aResponse = array();
+
+    $sql ="SELECT B.color FROM bran_productos B WHERE B.modelo ='$id';";
+
+    if($query = mysqli_query($conexion_uno, $sql)){
+
+        if(mysqli_num_rows($query)>0){
+
+            while( $row = mysqli_fetch_array($query) ) { 
+
+                $aResponse[] = $row; 
+
+            }
+
+        }
+
+    }
+
+    return $aResponse;
+
 }
 
 

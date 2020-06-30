@@ -209,7 +209,7 @@ $us = $_GET['us'];
                                         ?>
                                         <tr style="font-size: 11px;">
 
-                                            <td><a href="../vistaproducto.php?id=<?php echo $item["id"] ?>&p=<?php echo $item['price'] ?>"><?php echo $item["name"]; ?></a></td>
+                                            <td><a href="../vistaproducto.php?id=<?php echo $item["id"] ?>&img=<?php echo $item['id'] ?>"><?php echo $item["name"]; ?></a></td>
                                             <td><?php echo "$ " . number_format($item["pu"], 2) . " MX"; ?></td>
                                             <td><?php echo $item["qty"]; ?></td>
                                             <td><?php echo $item["color"]; ?></td>

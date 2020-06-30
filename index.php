@@ -116,33 +116,13 @@
             </a>
         </div>
 
-        <div  class="container-fluid text-center bg-grey">
-            <h3>3A BRANDING GROUP.</h3><br>
-            <div class="row text-center slideanim">
-                <div class="col-sm-4">
-
-                    <img src="img_3a/productos.png" alt="variedad" title="variedad" height="120px"> 
-                    <p>Variedad e innovación en nuestros productos.</p>
-
-                </div>
-                <div class="col-sm-4">
-                    <img src="img_3a/mexico.png" height="120px" alt="servicio" title="servicio">
-                    <p>Servicio en toda la República.</p>
-
-                </div>
-                <div class="col-sm-4">
-                    <img src="img_3a/atencion.png" height="120px" title="atencion" alt="atencion"> 
-                    <p>Atención personalizada.</p>
-                </div>
-            </div>
-        </div>
 
 
-        <?php include './php/productos_consulta.php'; ?>
+        <?php include './php/productos_consulta.php';?>
+        
 
         <a href="productos.php"><img src="promos/ban.png" class="img-responsive slide" alt="banner" title="banner"></a>
-
-
+        
         <?php include './nav/footer.php'; ?>
 
         <?php include './nav/scripts.php'; ?>

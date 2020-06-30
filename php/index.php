@@ -6,4 +6,4 @@
  * and open the template in the editor.
  */
 
-header('Location: http://3abranding.com.mx/');
+header('Location: http://3abranding.com/');
