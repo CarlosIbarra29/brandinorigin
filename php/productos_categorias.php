@@ -1,19 +1,20 @@
-<?php
+<?php 
 
 include './funciones/cFunciones.php';
 
-$aDataProductos = fnGetproductosPrincipal();
+$busqueda= $_POST['palabra_clave'];
 
-$categorias = fnGetCategoriasP();
+if (isset($busqueda)):
 
-$articulos = $_GET['num_ar'];
+    $busqueda_total = fnGetBusqueda($busqueda);
 
 ?>
 
+
 <div class="row">
 	<div class="container-fluid">
-	<h3 class="text-center">Productos relevantes.</h3><br>
-	<?php foreach ($aDataProductos as $k => $v):?>
+	<h3 class="text-center">Palabra busqueda: <b><?php print $busqueda?></b>, <b><?php print count($busqueda_total)?></b> resultados.</h3><br>
+	<?php foreach ($busqueda_total as $k => $v):?>
 		<article class="col-md-2 col-sm-6 col-xs-4" style="padding: 1px 1px 1px;" >
 			<div class="row">
 				<div class="col-sm-12 text-center">
@@ -36,30 +37,12 @@ $articulos = $_GET['num_ar'];
 	</div>
 </div>
 
-<div class="row">
-	<div id="" class="container-fluid barra_menu" style="padding: 5px">
-            <h4 class="text-center" style="color: #fff">Categorias</h4>
-    </div>
-</div>
-	<?php foreach ($categorias as $k => $v):?>
-			<article class="col-md-2 col-sm-6 col-xs-4 bg-grey" style="padding: 1px 1px 1px;" >
-				<br>
-				<div class="row">
-					<div class="col-sm-12 text-center">
-						<a href="./productos.php?v_cat=<?php echo $v['nombre_cat'] ?>" style="color: #fff; padding: 1%;" data-title="<?php echo $v['nombre_cat'] ?>">
-							<img  title="<?php echo $v['nombre_cat']; ?>" alt="<?php echo $v['nombre_cat']; ?>" src="<?php echo $v['img_cat']; ?>" height="30px"  / >
-						</a><br><a style="color: transparent">-</a>
 
-						<p style="color: black" class="categorias">
-							<b><?php echo ($v['nombre_cat']);?>
-						</b>
-					</p><br>
-				</div>
-			</div>
-		</article>
-	<?php endforeach;?>
+<?php else: ?>
 
-</div>
-</div>
+	<h1>aqui va lo de categorias</h1>
+
+<?php endif; ?>
+
 
 

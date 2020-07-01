@@ -179,6 +179,12 @@ footer .glyphicon {
 .barra_menu{
     background-color: #3c3c3c;
 }
+
+.barra_menu_productos{
+    background-color: #3c3c3c;
+    
+}
+
 .contenido_barra{
     font-size: 15px; 
     color: #FFF;

@@ -1,8 +1,18 @@
 <?php
 
-
-
 include '../funciones/cFunciones.php';
+
+include './libreria/lib/nusoap.php';
+
+$CardCode = 'DFE5737';
+
+$client = new nusoap_client('http://desktop.promoopcion.com:8095/wsFullFilmentMX/FullFilmentMX.asmx?wsdl','wsdl');
+
+$err = $client->getError();
+
+if ($err) {     
+    echo 'Error en Constructor' . $err ;
+}
 
 $id_img= $_GET['img'];
 
@@ -26,14 +36,22 @@ $imagen = fnGetImg($id_img);
     <div class="col-sm-12">
         <img id="largeImage" src="<?php echo $img_g; ?>" width="70%"/>
         <div class="w3-row-padding w3-margin-top" id="thumbs">
-            <?php foreach ($imagen as $k => $v): ?>
-                <div class="w3-third" style="padding: 1%; cursor: pointer">
-                    <div class="w3-card">
-
-                        <img src="<?php print $v['img']; ?>" style="width:80%;"/>
-                    </div>
-                </div>
-                <?php endforeach; ?>
+            <?php foreach ($imagen as $k => $v): 
+                $producto= $v['id_producto'];
+                $param = array('codigo' => $producto,'distribuidor' => $CardCode);
+                $existencias = $client->call('existencias', $param);
+                ?>
+                <?php foreach($existencias as $Ficha): ?>
+                     <?php foreach($Ficha as $detalles =>$valor): ?>
+                        <div class="w3-third" style="padding: 1%; cursor: pointer">
+                            <div class="w3-card">
+                                <img src="<?php print $v['img']; ?>" style="width:80%;"/>
+                                <p>Existencias: <?php print round($valor['Stok'],0) ?></p>
+                            </div>
+                        </div>
+                     <?php endforeach;?>
+                <?php endforeach;?>
+            <?php endforeach; ?>
         </div>  
     </div>
 </div>

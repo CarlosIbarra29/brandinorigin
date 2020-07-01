@@ -419,7 +419,7 @@ function fnGetproductosPrincipal(){
     FROM precios_promoopcion A 
     JOIN bran_productos B ON A.modelo = B.modelo
 
-    WHERE B.categoria ='ACC COMPUTO' ORDER BY RAND() LIMIT 12";
+    WHERE B.categoria ='SALUD' ORDER BY RAND() LIMIT 12";
 
     if($query = mysqli_query($conexion_uno, $sql)){
 
@@ -470,7 +470,7 @@ function fnGetImg($id_img){
     $aResponse = array();
 
 
-    $sql="SELECT B.img
+    $sql="SELECT B.img,B.id_producto
 
     FROM precios_promoopcion A 
 
@@ -593,6 +593,58 @@ function fnGetTecnica($id){
     $aResponse = array();
 
     $sql ="SELECT B.color FROM bran_productos B WHERE B.modelo ='$id';";
+
+    if($query = mysqli_query($conexion_uno, $sql)){
+
+        if(mysqli_num_rows($query)>0){
+
+            while( $row = mysqli_fetch_array($query) ) { 
+
+                $aResponse[] = $row; 
+
+            }
+
+        }
+
+    }
+
+    return $aResponse;
+
+}
+
+function fnGetBusqueda($busqueda){
+
+    $conexion_uno = fnConexion();
+
+    $aResponse = array();
+
+
+    if ($busqueda<>''){
+
+        $palabras=explode(" ",$busqueda);
+        $numero=count($palabras);
+
+        if ($numero==1){ 
+
+            $sql="SELECT A.*,B.precio FROM bran_productos A
+            JOIN precios_promoopcion B ON A.modelo = B.modelo 
+            WHERE A.modelo LIKE '%$busqueda%' 
+            OR A.nombre LIKE '%$busqueda%' 
+            OR A.descripcion LIKE '%$busqueda%'
+            OR A.color LIKE '%$busqueda%' 
+            OR A.material LIKE '%$busqueda%' 
+            OR A.impresion LIKE '%$busqueda%' LIMIT 50;";
+
+        }elseif ($numero>1) {
+
+            $sql="SELECT A.*,B.precio , MATCH (A.modelo,A.nombre,A.descripcion,A.color,A.material,A.impresion) AGAINST ('$busqueda') AS 'busqueda'
+            FROM abrandin_3A.bran_productos A 
+            JOIN precios_promoopcion B ON A.modelo = B.modelo  
+            WHERE MATCH (A.modelo,A.nombre,A.descripcion,A.color,A.material,A.impresion)
+            AGAINST ('$busqueda') ORDER BY busqueda DESC LIMIT 50;";
+        }
+    }
+
 
     if($query = mysqli_query($conexion_uno, $sql)){
 
