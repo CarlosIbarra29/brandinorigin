@@ -281,7 +281,7 @@ function fnPrecios($tecnica,$productID,$unidades,$precio_inicio){
 
     	$ctinta = 0;
     	$ctecnica = $plaser;
-    } else if ($tecnica == 'GRABADO LASER') {
+    } else if ($tecnica == 'GRABADO LASER') { 
     	$color = "sin color";
     	$tinta = "sin tinta";
     	if ($unidades <= 100) {
