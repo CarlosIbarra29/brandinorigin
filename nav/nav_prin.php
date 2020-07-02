@@ -48,7 +48,7 @@ $us= $_GET['us'];
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="./index.php?num_ar=<?php echo $articulos ?>&us=<?php echo $us ?>">Inicio</a></li>
                 <li><a href="./nosotros.php?num_ar=<?php echo $articulos ?>&us=<?php echo $us ?>">Nosotros</a></li>
-                <li><a href="./productos.php?num_ar=<?php echo $articulos ?>&us=<?php echo $us ?>">Productos</a></li>
+                <li><a href="./productos.php?num_ar=<?php echo $articulos ?>&us=<?php echo $us ?>&productos=ALL">Productos</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Servicios
                         <span class="caret"></span></a>
@@ -89,7 +89,7 @@ $us= $_GET['us'];
 <div class="jumbotron text-center">
     <img src="logos/logo_3a.png" alt="logo" title="3a" class="logo">
     <h1 style="font-size: 12px;">La forma más rápida y fácil de comprar promocionales.</h1>
-    <form method="post" action="./productos.php" class="text-center">
+    <form method="get" action="./productos.php" class="text-center">
         <div class="col-sm-12">
             <input type="text" class="form-control" style="border-radius: 50px;" required="" name="palabra_clave" id="coding_language" placeholder="¿Qué estás buscando...?">
             <span class="glyphicon glyphicon-search form-control-feedback" style="padding-right: 40px; color: #3c3c3c;"></span>

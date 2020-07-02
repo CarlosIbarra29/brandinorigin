@@ -472,9 +472,7 @@ function fnGetImg($id_img){
 
     $sql="SELECT B.img,B.id_producto
 
-    FROM precios_promoopcion A 
-
-    JOIN bran_productos B ON A.modelo = B.modelo
+    FROM bran_productos B
 
     WHERE B.modelo ='$id_img';
 
@@ -538,12 +536,8 @@ function fnGetCategoriasP(){
     $conexion_uno = fnConexion();
     $catResponse = array();
     $sql ="SELECT
-
     C.nombre_cat,
     C.img_cat
-    -- distinct 
-    -- A.categoria
-    -- FROM bran_productos A
     FROM categorias C
     ORDER BY RAND()
     LIMIT 18";
@@ -612,7 +606,7 @@ function fnGetTecnica($id){
 
 }
 
-function fnGetBusqueda($busqueda){
+function fnGetBusquedaProductosCount($busqueda){
 
     $conexion_uno = fnConexion();
 
@@ -626,22 +620,24 @@ function fnGetBusqueda($busqueda){
 
         if ($numero==1){ 
 
-            $sql="SELECT A.*,B.precio FROM bran_productos A
+            $sql="SELECT COUNT(*) AS 'TOTAL' FROM bran_productos A
             JOIN precios_promoopcion B ON A.modelo = B.modelo 
             WHERE A.modelo LIKE '%$busqueda%' 
             OR A.nombre LIKE '%$busqueda%' 
             OR A.descripcion LIKE '%$busqueda%'
             OR A.color LIKE '%$busqueda%' 
             OR A.material LIKE '%$busqueda%' 
-            OR A.impresion LIKE '%$busqueda%' LIMIT 50;";
+            OR A.impresion LIKE '%$busqueda%';";
 
         }elseif ($numero>1) {
 
-            $sql="SELECT A.*,B.precio , MATCH (A.modelo,A.nombre,A.descripcion,A.color,A.material,A.impresion) AGAINST ('$busqueda') AS 'busqueda'
+            $sql="SELECT COUNT(*) AS 'TOTAL'
             FROM abrandin_3A.bran_productos A 
             JOIN precios_promoopcion B ON A.modelo = B.modelo  
             WHERE MATCH (A.modelo,A.nombre,A.descripcion,A.color,A.material,A.impresion)
-            AGAINST ('$busqueda') ORDER BY busqueda DESC LIMIT 50;";
+            AGAINST ('$busqueda') ORDER BY busqueda DESC;";
+
+
         }
     }
 
@@ -663,6 +659,105 @@ function fnGetBusqueda($busqueda){
     return $aResponse;
 
 }
+
+function fnGetBusqueda($busqueda,$start,$num_pag){
+
+    global $conexion;
+
+    $aResponse = array();
+
+    if ($busqueda<>''){
+
+        $palabras=explode(" ",$busqueda);
+        $numero=count($palabras);
+
+        if ($numero==1){ 
+
+            $sql="SELECT A.*,B.precio FROM bran_productos A
+            JOIN precios_promoopcion B ON A.modelo = B.modelo 
+            WHERE A.modelo LIKE '%$busqueda%' 
+            OR A.nombre LIKE '%$busqueda%' 
+            OR A.descripcion LIKE '%$busqueda%'
+            OR A.color LIKE '%$busqueda%' 
+            OR A.material LIKE '%$busqueda%' 
+            OR A.impresion LIKE '%$busqueda%' LIMIT $start , $num_pag";
+
+
+        }elseif ($numero>1) {
+
+            $sql="SELECT A.*,B.precio FROM bran_productos A
+            INNER JOIN precios_promoopcion B ON A.modelo = B.modelo
+            Where Match(A.modelo,A.nombre,A.descripcion,A.color,A.material,A.impresion)
+            AGAINST($v_clave) LIMIT  $start ,$num_pag";
+
+        }
+    }
+
+
+    $query = $conexion->query($sql);
+
+    while ($row = $query->fetch_assoc()){
+
+        $aResponse[] = $row; 
+
+    }
+
+    return $aResponse;
+
+}
+
+function fnGetBusquedaProductosCategoriaCount($categorias){
+
+    $conexion_uno = fnConexion();
+
+    $aResponse = array();
+
+    $sql="SELECT COUNT(*) AS 'TOTAL' FROM abrandin_3A.bran_productos A WHERE A.categoria='$categorias'";
+
+
+    if($query = mysqli_query($conexion_uno, $sql)){
+
+        if(mysqli_num_rows($query)>0){
+
+            while( $row = mysqli_fetch_array($query) ) { 
+
+                $aResponse[] = $row; 
+
+            }
+
+        }
+
+    }
+
+    return $aResponse;
+
+}
+
+function fnGetBusquedaCategorias($categorias,$start,$num_pag){
+
+    global $conexion;
+
+    $aResponse = array();
+
+     $sql="SELECT A.*,B.precio 
+     FROM bran_productos A 
+     LEFT JOIN precios_promoopcion B ON A.modelo = B.modelo  
+     WHERE A.categoria ='$categorias' LIMIT  $start ,$num_pag";
+
+    $query = $conexion->query($sql);
+
+    while ($row = $query->fetch_assoc()){
+
+        $aResponse[] = $row; 
+
+    }
+
+    return $aResponse;
+
+}
+
+
+
 
 
 

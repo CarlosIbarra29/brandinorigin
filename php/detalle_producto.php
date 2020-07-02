@@ -76,7 +76,11 @@ $tecnica = fnGetTecnica($id);
 										<select class="form-control" id="sel1" name="tecnica" id="primero" onchange="habilitar(this.value);">
 											<option></option>
 											<option>Sin técnica</option>
-											<option></option>
+											<option>SERIGRAFIA</option>
+											<option>TAMPOGRAFIA</option> 
+											<option>BORDADO</option> 
+											<option>GRABADO</option> 
+											<option>GRABADO LASER</option>
 
 										</select>
 									</div>

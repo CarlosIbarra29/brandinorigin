@@ -209,7 +209,7 @@ $us = $_GET['us'];
                                         ?>
                                         <tr style="font-size: 11px;">
 
-                                            <td><a href="../vistaproducto.php?id=<?php echo $item["id"] ?>&img=<?php echo $item['id'] ?>"><?php echo $item["name"]; ?></a></td>
+                                            <td><a href=""><?php echo $item["name"]; ?></a></td>
                                             <td><?php echo "$ " . number_format($item["pu"], 2) . " MX"; ?></td>
                                             <td><?php echo $item["qty"]; ?></td>
                                             <td><?php echo $item["color"]; ?></td>
@@ -253,7 +253,7 @@ $us = $_GET['us'];
 
                                 <tr>
                                     <td colspan="6">
-                                        <a href="../productos.php?us=<?php echo $us ?>&nombre=<?php echo $nombre ?>&email=<?php echo $email ?>&telefono=<?php echo $telefono ?>&apellidos=<?php echo $apellidos ?>&num_ar=<?php echo $ar ?>" class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i> Añadir Producto</a>
+                                        <a href="../productos.php?us=<?php echo $us ?>&nombre=<?php echo $nombre ?>&email=<?php echo $email ?>&telefono=<?php echo $telefono ?>&apellidos=<?php echo $apellidos ?>&num_ar=<?php echo $ar ?>&productos=ALL" class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i> Añadir Producto</a>
                                     </td>
 
                                     <?php
