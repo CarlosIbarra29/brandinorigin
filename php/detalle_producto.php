@@ -8,6 +8,10 @@ $Productos = fnGetproducto($id);
 $colores = fnGetColores($id);
 $tecnica = fnGetTecnica($id);
 
+
+
+
+
 ?>
 
 <div class="row">
@@ -27,6 +31,7 @@ $tecnica = fnGetTecnica($id);
 
 					<div class="col-sm-6">
 						<?php foreach($Productos as $k =>$v): ?>
+
 							<h4 style="color: black;"><?php print $v['modelo']; ?></h4>
 							<p style="color: black;"><?php print $v['descripcion']?></p>
 							<hr>
@@ -34,10 +39,15 @@ $tecnica = fnGetTecnica($id);
 							<p style="color: black;"><b><?php print $v['Des2']; ?></p>
 							<hr>
 							<p>Colores: <?php print $v['colores']; ?></p>
-							<p >Tamaño: <?php print $v['tamanio']; ?></p>
-							<p >Material: <?php print $v['material']; ?></p>
-							<p >Técnica impresión: <?php print $v['impresión']; ?></p>
-							<p >Area impresión: <?php print $v['area_impresion']; ?></p>
+							<p>Tamaño: <?php print $v['tamanio']; ?></p>
+							<p>Material: <?php print $v['material']; ?></p>
+							<?php if($v['impresión']=''): ?>
+								 <p>Técnica impresión: Sin técnica</p>	
+							<?php else: ?>
+								<p>Técnica impresión: <?php print $v['impresion']; ?></p>
+							<?php endif ?>	
+							
+							<p>Area impresión: <?php print $v['area_impresion']; ?></p>
 
 							<hr>
 							
@@ -75,12 +85,15 @@ $tecnica = fnGetTecnica($id);
 									<div class="col-sm-5">          
 										<select class="form-control" id="sel1" name="tecnica" id="primero" onchange="habilitar(this.value);">
 											<option></option>
-											<option>Sin técnica</option>
+											<!--<option>Sin técnica</option>
 											<option>SERIGRAFIA</option>
 											<option>TAMPOGRAFIA</option> 
 											<option>BORDADO</option> 
 											<option>GRABADO</option> 
-											<option>GRABADO LASER</option>
+											<option>GRABADO LASER</option>-->
+											<?php foreach ($Productos as $key => $value):?>
+												<option value="<?php print $value['impresion']; ?>"><?php print $value['impresion']; ?></option>
+											<?php endforeach; ?>
 
 										</select>
 									</div>

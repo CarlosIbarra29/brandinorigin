@@ -84,40 +84,6 @@
 
         <?php include './nav/nav_prin.php'; ?>
 
-           
-
-
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-
-                <?php include './php/banner.php';?>
-
-                <div class="item">
-                    <div class="carousel-caption texto_banner slide">
-                        <div class="fondo_banner">
-                            <h1 style="font-size: 22px">CONOCE NUESTROS PRODUCTOS.</h1>
-                            <hr class="hr_imagen">
-                            <a style="color: #3c3c3c; cursor: pointer;" href="php/VerCarta.php"><h4>Generar cotización aquí</h4></a>
-                        </div>
-                    </div>
-                    <img src="banners/catalogo.jpg" alt="ban" title="conoce" class="img-responsive">
-                </div>
-            </div>
-
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-
-
-
         <?php include './php/productos_consulta.php';?>
         
 

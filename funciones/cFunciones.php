@@ -756,6 +756,31 @@ function fnGetBusquedaCategorias($categorias,$start,$num_pag){
 
 }
 
+function fnGetBanners(){
+
+    $conexion_uno = fnConexion();
+
+    $aResponse = array();
+
+    $sql="SELECT * FROM banners";
+
+    if($query = mysqli_query($conexion_uno, $sql)){
+
+        if(mysqli_num_rows($query)>0){
+
+            while( $row = mysqli_fetch_array($query) ) { 
+
+                $aResponse[] = $row; 
+
+            }
+
+        }
+
+    }
+
+    return $aResponse;
+}
+
 
 
 
