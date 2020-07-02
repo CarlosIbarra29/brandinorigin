@@ -712,7 +712,7 @@ function fnGetBusquedaProductosCategoriaCount($categorias){
 
     $aResponse = array();
 
-    $sql="SELECT COUNT(*) AS 'TOTAL' FROM abrandin_3A.bran_productos A WHERE A.categoria='$categorias'";
+    $sql="SELECT COUNT(*) AS 'TOTAL' FROM abrandin_3A.bran_productos A WHERE A.categoria LIKE '%$categorias%'";
 
 
     if($query = mysqli_query($conexion_uno, $sql)){
@@ -742,7 +742,7 @@ function fnGetBusquedaCategorias($categorias,$start,$num_pag){
      $sql="SELECT A.*,B.precio 
      FROM bran_productos A 
      LEFT JOIN precios_promoopcion B ON A.modelo = B.modelo  
-     WHERE A.categoria ='$categorias' LIMIT  $start ,$num_pag";
+     WHERE A.categoria LIKE '%$categorias%' LIMIT  $start ,$num_pag";
 
     $query = $conexion->query($sql);
 
