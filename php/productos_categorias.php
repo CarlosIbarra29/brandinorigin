@@ -1,14 +1,17 @@
 <?php 
 
 
-include './conexion/conexion.php';
-
 include './funciones/cFunciones.php';
 
 
 $v_clave = $_GET['palabra_clave'];
 $categorias = $_GET['categoria'];
 $productos = $_GET['productos'];
+
+
+
+ 
+
 
 $num_pag = $_GET['pag'];
 
@@ -52,8 +55,6 @@ if (isset($v_clave)):
 
     $result = fnGetBusqueda($v_clave,$start,$num_pag);
 
-
-
 endif;?>
 
 
@@ -68,7 +69,10 @@ endif;?>
 endif;?>
 
 
-<?php if (isset($productos)):
+
+<?php
+
+if (isset($productos)):
 
    $num_total_rows =1; 
 

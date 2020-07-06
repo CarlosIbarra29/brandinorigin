@@ -612,7 +612,6 @@ function fnGetBusquedaProductosCount($busqueda){
 
     $aResponse = array();
 
-
     if ($busqueda<>''){
 
         $palabras=explode(" ",$busqueda);
@@ -634,14 +633,13 @@ function fnGetBusquedaProductosCount($busqueda){
             $sql="SELECT COUNT(*) AS 'TOTAL'
             FROM abrandin_3A.bran_productos A 
             JOIN precios_promoopcion B ON A.modelo = B.modelo  
-            WHERE MATCH (A.modelo,A.nombre,A.descripcion,A.color,A.material,A.impresion)
-            AGAINST ('$busqueda') ORDER BY busqueda DESC;";
-
+            WHERE MATCH (A.id_producto,A.modelo,A.nombre,A.descripcion,A.categoria,A.color)
+            AGAINST ('$busqueda');";
 
         }
     }
 
-
+     
     if($query = mysqli_query($conexion_uno, $sql)){
 
         if(mysqli_num_rows($query)>0){
@@ -662,7 +660,7 @@ function fnGetBusquedaProductosCount($busqueda){
 
 function fnGetBusqueda($busqueda,$start,$num_pag){
 
-    global $conexion;
+    $conexion_uno = fnConexion();
 
     $aResponse = array();
 
@@ -687,18 +685,24 @@ function fnGetBusqueda($busqueda,$start,$num_pag){
 
             $sql="SELECT A.*,B.precio FROM bran_productos A
             INNER JOIN precios_promoopcion B ON A.modelo = B.modelo
-            Where Match(A.modelo,A.nombre,A.descripcion,A.color,A.material,A.impresion)
-            AGAINST($v_clave) LIMIT  $start ,$num_pag";
+            Where Match(A.id_producto,A.modelo,A.nombre,A.descripcion,A.categoria,A.color)
+            AGAINST('$busqueda') LIMIT  $start ,$num_pag;";
 
         }
     }
 
 
-    $query = $conexion->query($sql);
+    if($query = mysqli_query($conexion_uno, $sql)){
 
-    while ($row = $query->fetch_assoc()){
+        if(mysqli_num_rows($query)>0){
 
-        $aResponse[] = $row; 
+            while( $row = mysqli_fetch_array($query) ) { 
+
+                $aResponse[] = $row; 
+
+            }
+
+        }
 
     }
 
@@ -735,7 +739,7 @@ function fnGetBusquedaProductosCategoriaCount($categorias){
 
 function fnGetBusquedaCategorias($categorias,$start,$num_pag){
 
-    global $conexion;
+    $conexion_uno = fnConexion();
 
     $aResponse = array();
 
@@ -744,11 +748,18 @@ function fnGetBusquedaCategorias($categorias,$start,$num_pag){
      LEFT JOIN precios_promoopcion B ON A.modelo = B.modelo  
      WHERE A.categoria LIKE '%$categorias%' LIMIT  $start ,$num_pag";
 
-    $query = $conexion->query($sql);
 
-    while ($row = $query->fetch_assoc()){
+     if($query = mysqli_query($conexion_uno, $sql)){
 
-        $aResponse[] = $row; 
+        if(mysqli_num_rows($query)>0){
+
+            while( $row = mysqli_fetch_array($query) ) { 
+
+                $aResponse[] = $row; 
+
+            }
+
+        }
 
     }
 
@@ -762,7 +773,7 @@ function fnGetBanners(){
 
     $aResponse = array();
 
-    $sql="SELECT * FROM banners";
+    $sql ="SELECT * FROM banners;";
 
     if($query = mysqli_query($conexion_uno, $sql)){
 
