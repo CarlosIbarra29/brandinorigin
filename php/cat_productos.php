@@ -1,7 +1,5 @@
 <?php
 
-//include './funciones/cFunciones.php';
-
 $categorias = fnGetCat_Pro();
 
 ?>
@@ -14,6 +12,7 @@ $categorias = fnGetCat_Pro();
 </div>
 
 <?php foreach ($categorias as $k => $v):?>
+    
     <article class="col-md-2 col-sm-6 col-xs-4  cat" >
         <br>
         <div class="row">

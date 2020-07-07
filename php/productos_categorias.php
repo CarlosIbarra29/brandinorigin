@@ -65,6 +65,8 @@ if (isset($productos)):
 endif;?>
 
 <?php if ($num_total_rows > 0): ?>
+   
+
     <?php if ($productos== NULL):?>
 
         <div class="container-fluid">
@@ -74,10 +76,12 @@ endif;?>
                 </div>
             </div>
         </div>
-    <?php endif;?>    
 
+    <?php endif;?>  
+ 
 
     <articles class="row">
+
         <?php foreach ($result as $k => $v): ?>
             <article class="col-md-2 col-sm-6 col-xs-4" style="padding: 1px 1px 1px;" >
                 <div class="row">
@@ -90,7 +94,7 @@ endif;?>
                             </p>
                         </a>
                     </div>
-                </div>
+                </div><br>
 
                 <div class="row">
                     <div class="col-sm-12 text-center">
@@ -100,10 +104,14 @@ endif;?>
                         </button>
                         </form>
                     </div>
-                </div>
+                </div><br>
             </article>
         <?php endforeach; ?>
+
     </articles>
+
+ 
+  
             
 <?php else: ?>
 
@@ -111,88 +119,94 @@ endif;?>
         <a href="./productos.php" class="close" data-dismiss="alert" aria-label="close">&times;</a><br>
         <strong>Sin Resultado de busqueda!</strong>.
     </div>
+
 <?php endif; ?>
 
 <nav class="text-center">
     <ul class="pagination pagination-small pagination">
         <?php 
+
         $total_pages = ceil($num_total_rows / $num_pag); 
 
         if(isset($v_clave)){
+
             $urlpag= "palabra_clave=".$v_clave;
+
         }else{
+
             $urlpag= "categoria=".$categorias;
         }
 
         ?>
 
+
         <?php if($productos==NULL):?>
+
             <h4><a style="cursor: pointer; font-size: 14px; color: #3c3c3c;" href="./productos.php?<?php print $urlpag ?>&pag=<?php echo $num_pag * 2 ?>">Ver Más</a></h4>
             <h4><a href="#myPage" title="To Top" ><span class="glyphicon glyphicon-chevron-up"></span></a></h4>
+
         <?php endif;?>
 
 
 
-        <?php
-        if ($page != 1) {
-        ?>
-        <li class="page-item"><a class="page-link" href="productos.php?page=<?php echo ($page - 1) ?>&<?php print $urlpag ?>"><span aria-hidden="true">&laquo;</span></a>
-        </li>
+        <?php  if ($page != 1):?>
 
-        <?php
-        }
+            <li class="page-item"><a class="page-link" href="productos.php?page=<?php echo ($page - 1) ?>&<?php print $urlpag ?>"><span aria-hidden="true">&laquo;</span></a>
+            </li>
 
-    if ($total_pages < 10) {
-        for ($i = 1; $i <= $total_pages; $i++) {
-            if ($page == $i) {
-        ?>
+        <?php endif;?>
+        
+        <?php if ($total_pages < 10) {
 
-        <li class="page-item active"><a class="page-link" href="#"><?php echo $page ?></a></li>
-        <?php
+            for ($i = 1; $i <= $total_pages; $i++):
 
-    } else {
-        ?>
+                if ($page == $i):?>
 
-        <li class="page-item">
-            <a class="page-link" href="productos.php?page=<?php echo $i ?>&<?php print $urlpag ?>"><?php echo $i ?></a>
-        </li>
-        <?php
-    }
-}
+                    <?php if ( $productos=='ALL'): ?>
 
-} else {
+                    <?php else:?>
 
-    for($i=max(1, min($page-5,$total_pages-10));
-      $i < max(11, min($page+5,$total_pages+1));
-      $i++) {
+                        <li class="page-item active"><a class="page-link" href="#"><?php echo $page ?></a></li>
 
-        if ($page == $i) {
-        ?>
+                    <?php endif; ?>     
+                  
+                <?php else: ?>
 
-        <li class="page-item active"><a class="page-link" href="#"><?php echo $page ?></a></li>
-        <?php
+                    <li class="page-item">
+                        <a class="page-link" href="productos.php?page=<?php echo $i ?>&<?php print $urlpag ?>"><?php echo $i ?></a>
+                    </li>
+
+                <?php endif;
+
+            endfor;
 
         } else {
-        ?>
 
-        <li class="page-item">
-            <a class="page-link" href="productos.php?page=<?php echo $i ?>&<?php print $urlpag ?>"><?php echo $i ?></a>
-        </li>
-        <?php
-    }
-}
-}
+            for($i=max(1, min($page-5,$total_pages-10)); $i < max(11, min($page+5,$total_pages+1)); $i++):
 
-if ($page != $total_pages) {
-        ?>
+                if ($page == $i): ?>
 
-        <li class="page-item">
-            <a class="page-link" href="productos.php?page=<?php echo ($page + 1) ?>&<?php print $urlpag ?>">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-        <?php
-}
-        ?>
+                    <li class="page-item active"><a class="page-link" href="#"><?php echo $page ?></a></li>
+
+                <?php else :?>
+
+                    <li class="page-item">
+                        <a class="page-link" href="productos.php?page=<?php echo $i ?>&<?php print $urlpag ?>"><?php echo $i ?></a>
+                    </li>
+
+                <?php endif;?>
+
+            <?php endfor; 
+
+        }
+
+        if ($page != $total_pages): ?>
+
+            <li class="page-item">
+                <a class="page-link" href="productos.php?page=<?php echo ($page + 1) ?>&<?php print $urlpag ?>">
+                <span aria-hidden="true">&raquo;</span></a>
+            </li>
+
+        <?php endif; ?>
     </ul>
 </nav>

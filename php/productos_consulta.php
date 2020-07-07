@@ -16,7 +16,7 @@ $articulos = $_GET['num_ar'];
 	<div class="carousel-inner">
 		<?php foreach ($banner as $k => $v):?>
 			<div class="item <?php print ' '.$active =$v["item_active"];?>">
-				<a href="productos.php"><img src="<?php print $url= $v["url"];?>" class="img-responsive slide" alt="banner" title="banner"></a>
+				<a href="productos.php?<?php print $v["categoria"];?>"><img src="<?php print $url= $v["url"];?>" class="img-responsive slide" alt="banner" title="banner"></a>
 			</div>
 		<?php endforeach;?>
 	</div>

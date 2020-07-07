@@ -470,7 +470,7 @@ function fnGetImg($id_img){
     $aResponse = array();
 
 
-    $sql="SELECT B.img,B.id_producto
+    $sql="SELECT B.img,B.id_producto,B.importadora
 
     FROM bran_productos B
 
@@ -496,6 +496,9 @@ function fnGetImg($id_img){
     return $aResponse;
 
 }
+
+
+
 
 
 function fnGetproducto($id){
