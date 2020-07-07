@@ -20,7 +20,7 @@ $tecnica = fnGetTecnica($id);
 
 					<div class="col-sm-6 text-center ">
 
-						<?php include './php/item_color.php'; ?>
+						<?php include './php/detalle_img.php'; ?>
 
 					</div>
 

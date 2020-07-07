@@ -13,7 +13,7 @@ $apellidos = $_GET['apellidos'];
 $email = $_GET['email'];
 $telefono = $_GET['telefono'];
 
-//include './session_start.php';
+include './session_start.php';
 
 $us = $_GET['us'];
 ?>
@@ -86,75 +86,11 @@ $us = $_GET['us'];
     </head>
     <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
-
-
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>                        
-                    </button>
-                    <a class="navbar-brand" href="#myPage"><img src="../logos/logo_3a.png" height="35px"></a>
-                </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav navbar-left">
-                        <li><a href="../index.php?num_ar=<?php echo $ar ?>&us=<?php echo $us ?>">Inicio</a></li>
-                        <li><a href="../nosotros.php?num_ar=<?php echo $ar ?>&us=<?php echo $us ?>">Nosotros</a></li>
-                        <li><a href="../productos.php?num_ar=<?php echo $ar ?>&us=<?php echo $us ?>">Productos</a></li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Servicios
-                                <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a style="font-size: 11px" href="../event.php?num_ar=<?php echo $ar ?>&us=<?php echo $us ?>">Event Marketing</a></li>
-                                <li><a style="font-size: 11px" href="../impresiones.php?num_ar=<?php echo $ar ?>&us=<?php echo $us ?>">Impresiones</a></li>
-                                <li><a style="font-size: 11px" href="../stands.php?num_ar=<?php echo $ar ?>&us=<?php echo $us ?>">Stands</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Catalogos
-                                <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a style="font-size: 11px" href="">Productos 2019</a></li>
-                                <li><a style="font-size: 11px" href="">Productos 2020</a></li>
-                            </ul>
-                        </li>
-
-                    </ul>
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="VerCarta.php"><span class="glyphicon glyphicon-shopping-cart"></span> Ver Pedido(<?php echo $ar ?>)
-                                <?php
-                                if ($us == "") {
-                                    
-                                } else {
-                                    echo '- Bienvenido ' . $us;
-                                    ?>
-                                    <li><a href="cerrar_sesion.php"><span class="glyphicon glyphicon-log-in"></span> Cerra Session</a></li>
-                                    <?php
-                                }
-                                ?>
-
-                            </a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <div class="jumbotron text-center" style="padding-top: 50px;">
-            <img src="../logos/logo_3a.png" class="logo">
-            <form method="get" action="../productos.php">
-                <div class="col-sm-12">
-                    <input type="text" class="form-control" style="border-radius: 50px;" required="" name="palabra_clave" id="coding_language" placeholder="¿Qué estás buscando?">
-                    <span class="glyphicon glyphicon-search form-control-feedback" style="padding-right: 40px; color: #3c3c3c;"></span>
-                </div>
-            </form>
+        <div class="jumbotron text-center">
+            <img src="../logos/logo_3a.png" alt="logo" title="3a" class="logo">
+            <h1 style="font-size: 12px;">La forma más rápida y fácil de comprar promocionales.</h1>
         </div>
-        <br>
 
-
-        <!-- Container (About Section) -->
         <div id="" class="container-fluid barra_menu">
             <div class="row">
                 <div class="col-sm-4 text-center contenido_barra">
@@ -171,13 +107,17 @@ $us = $_GET['us'];
                 </div>
             </div>
         </div>
+
+        <br><br>
+
+
         <script type="text/javascript" src="../js/update_car.js">
         </script>
         <div class="container-fluid" style="padding: 20px 20px 200px;">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="table-responsive">
-                        <h1>Cotizacion</h1>
+                        <h1>Cotización</h1>
                         <table class="table">
                             <thead>
                                 <tr style="font-size: 11px;">
@@ -246,7 +186,7 @@ $us = $_GET['us'];
                                     }
                                 } else {
                                     ?>
-                                    <tr><td colspan="5"><p>Tu carta esta vacia.....</p></td>
+                                    <tr><td colspan="5"><p>Sin artículos.</p></td>
                                     <?php } ?>
                             </tbody>
                             <tfoot>
@@ -318,6 +258,7 @@ $us = $_GET['us'];
                 </div>
             </div>
         </div>
+
         <?php include '../nav/scripts.php'; ?>
 
         <br><br><br>
