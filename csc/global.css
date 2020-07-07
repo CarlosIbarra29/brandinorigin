@@ -185,6 +185,16 @@ footer .glyphicon {
     
 }
 
+/*.cat{
+    
+    padding-top: -2px;
+}*/
+
+.cat_font{
+font-size: 11px;
+
+}
+
 .contenido_barra{
     font-size: 15px; 
     color: #FFF;

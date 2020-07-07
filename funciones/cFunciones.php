@@ -554,6 +554,32 @@ function fnGetCategoriasP(){
 }
 
 
+function fnGetCat_Pro(){
+
+    $conexion_uno = fnConexion();
+    $catResponse = array();
+    $sql ="SELECT
+    C.nombre_cat,
+    C.img_cat
+    FROM categorias C
+    ORDER BY  C.nombre_cat
+    ";
+
+    if($query = mysqli_query($conexion_uno, $sql)){
+
+        if(mysqli_num_rows($query)>0){
+
+            while( $row=mysqli_fetch_array($query) ) { $catResponse[] = $row; }
+        }
+    }
+    
+    return $catResponse;
+}
+
+
+
+
+
 function fnGetColores($id){
 
     $conexion_uno = fnConexion();

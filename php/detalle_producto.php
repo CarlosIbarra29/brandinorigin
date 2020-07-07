@@ -7,11 +7,6 @@ $id= $_GET['id'];
 $Productos = fnGetproducto($id);
 $colores = fnGetColores($id);
 $tecnica = fnGetTecnica($id);
-
-
-
-
-
 ?>
 
 <div class="row">
@@ -85,16 +80,12 @@ $tecnica = fnGetTecnica($id);
 									<div class="col-sm-5">          
 										<select class="form-control" id="sel1" name="tecnica" id="primero" onchange="habilitar(this.value);">
 											<option></option>
-											<!--<option>Sin técnica</option>
+											<option>Sin técnica</option>
 											<option>SERIGRAFIA</option>
 											<option>TAMPOGRAFIA</option> 
 											<option>BORDADO</option> 
 											<option>GRABADO</option> 
-											<option>GRABADO LASER</option>-->
-											<?php foreach ($Productos as $key => $value):?>
-												<option value="<?php print $value['impresion']; ?>"><?php print $value['impresion']; ?></option>
-											<?php endforeach; ?>
-
+											<option>GRABADO LASER</option>
 										</select>
 									</div>
 								</div>

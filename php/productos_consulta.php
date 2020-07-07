@@ -40,7 +40,7 @@ $articulos = $_GET['num_ar'];
 			</div>
 			<div class="row">
 				<div class="col-sm-12 text-center">
-					<form action="./vistaproducto.php?id=<?php echo $v['modelo'] ?>&img=<?php echo $v['modelo'] ?>&num_ar=<?php print $articulos?>" method="post">
+					<form action="./vistaproducto.php?id=<?php echo $v['modelo'] ?>&img=<?php echo $v['modelo'] ?>&num_ar=<?php print $articulos?>" method="post"><br>
 						<button class="btn btn-default" style="background-color:#3c3c3c; color: white">Cotizar</button>
 					</form>
 				</div>
@@ -49,13 +49,13 @@ $articulos = $_GET['num_ar'];
 	<?php endforeach;?>
 	</div>
 </div>
-
+<div class="container col-md-12">
 <div class="row">
 	<div id="" class="container-fluid barra_menu" style="padding: 5px">
 		<h4 class="text-center" style="color: #fff">Categorias</h4>
     </div>
 </div>
-
+</div>
 <?php foreach ($categorias as $k => $v):?>
 
 	<article class="col-md-2 col-sm-6 col-xs-4 bg-grey" style="padding: 1px 1px 1px;" >
