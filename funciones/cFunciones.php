@@ -643,14 +643,30 @@ function fnGetBusquedaProductosCount($busqueda){
 
     if ($busqueda<>''){
 
+        
+
         $palabras=explode(" ",$busqueda);
-        $numero=count($palabras);
+
+      
+        $numeroletras = strlen($palabras[0]);
+
+        if ($numeroletras == 1){
+
+            $numero = 1;
+
+        }else{
+
+            $numero = 2;
+
+        }
+
 
         if ($numero==1){ 
 
             $sql="SELECT COUNT(*) AS 'TOTAL' FROM bran_productos A
             JOIN precios_promoopcion B ON A.modelo = B.modelo 
             WHERE A.modelo LIKE '%$busqueda%' 
+            OR A.id_producto LIKE '%$busqueda%'
             OR A.nombre LIKE '%$busqueda%' 
             OR A.descripcion LIKE '%$busqueda%'
             OR A.color LIKE '%$busqueda%' 
@@ -693,16 +709,30 @@ function fnGetBusqueda($busqueda,$start,$num_pag){
 
     $aResponse = array();
 
+
+
     if ($busqueda<>''){
 
         $palabras=explode(" ",$busqueda);
-        $numero=count($palabras);
+
+        $numeroletras = strlen($palabras[0]);
+
+        if ($numeroletras == 1){
+
+            $numero = 1;
+
+        }else{
+
+            $numero = 2;
+
+        }
 
         if ($numero==1){ 
 
             $sql="SELECT A.*,B.precio FROM bran_productos A
             JOIN precios_promoopcion B ON A.modelo = B.modelo 
             WHERE A.modelo LIKE '%$busqueda%' 
+            OR A.id_producto LIKE '%$busqueda%'
             OR A.nombre LIKE '%$busqueda%' 
             OR A.descripcion LIKE '%$busqueda%'
             OR A.color LIKE '%$busqueda%' 

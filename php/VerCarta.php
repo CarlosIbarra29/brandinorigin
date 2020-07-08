@@ -13,7 +13,7 @@ $apellidos = $_GET['apellidos'];
 $email = $_GET['email'];
 $telefono = $_GET['telefono'];
 
-include './session_start.php';
+//include './session_start.php';
 
 $us = $_GET['us'];
 ?>
