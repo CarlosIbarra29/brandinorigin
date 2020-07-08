@@ -35,6 +35,7 @@ function fnConexion(){
 function fnPrecios($tecnica,$productID,$unidades,$precio_inicio){
 
 	global $conexion;
+
     if ($tecnica == "Sin técnica") {//sin tecnica
     	$color = "sin color";
     	$tinta = "sin tinta";
@@ -320,11 +321,10 @@ function fnPrecios($tecnica,$productID,$unidades,$precio_inicio){
 
     $sql = "SELECT  
     A.modelo,
-    B.nombre 
+    A.nombre 
     FROM 
-    precios_promoopcion A 
-    JOIN prod_promoopcion B ON A.modelo = B.modelo
-    WHERE B.modelo='$productID'";
+    bran_productos A 
+    WHERE A.modelo='$productID'";
     $query = $conexion->query($sql);
     $row = $query->fetch_assoc();
     $id = $row['modelo'];

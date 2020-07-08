@@ -74,7 +74,7 @@ $tecnica = fnGetTecnica($id);
 							</table>
 						<?php endforeach; ?>
 
-							<form class="form-horizontal" action="./php/AccionCarta.php?id=<?php echo $clave = $id; ?>&action=addToCart&p=<?php print $Productos[0]['precio'] ?>" method="POST">
+							<form class="form-horizontal" action="./php/AccionCarta.php?id=<?php print $productos[0]['modelo']; ?>&action=addToCart&p=<?php print $Productos[0]['precio'] ?>" method="POST">
 								<div class="form-group">
 									<label class="control-label col-sm-3" style="text-align: left">Técnica:</label>
 									<div class="col-sm-5">          
