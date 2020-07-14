@@ -7,6 +7,7 @@ include './funciones/cFunciones.php';
 $v_clave = $_GET['palabra_clave'];
 $categorias = $_GET['categoria'];
 $productos = $_GET['productos'];
+$filtro = $_GET['filtro'];
 
 
 $num_pag = $_GET['pag'];
@@ -63,6 +64,26 @@ if (isset($productos)):
    include 'cat_productos.php';
     
 endif;?>
+
+<?php if(isset($filtro)):
+  
+$categoria='ACC COMPUTO';
+$precio1='1';
+$precio2='300';
+$color= 'A';   
+
+$filtroBusqueda = fnGetFiltroProductosCount($categoria,$precio1,$precio2,$color);
+
+$num_total_rows= $filtroBusqueda[0]['TOTAL'];
+
+$result = fnGetFiltroProductos($categoria,$precio1,$precio2,$color,$start,$num_pag);
+
+
+
+endif;?>
+
+
+
 
 <?php if ($num_total_rows > 0): ?>
    

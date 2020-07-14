@@ -498,9 +498,6 @@ function fnGetImg($id_img){
 }
 
 
-
-
-
 function fnGetproducto($id){
 
     $conexion_uno = fnConexion();
@@ -578,9 +575,6 @@ function fnGetCat_Pro(){
     
     return $catResponse;
 }
-
-
-
 
 
 function fnGetColores($id){
@@ -849,7 +843,74 @@ function fnGetBanners(){
     }
 
     return $aResponse;
+
 }
+
+
+
+function fnGetFiltroProductosCount($categoria,$precio1,$precio2,$color){
+
+    $conexion_uno = fnConexion();
+
+    $aResponse = array();
+
+    $sql="SELECT COUNT(*) AS 'TOTAL'
+    FROM bran_productos A 
+    JOIN precios_promoopcion B ON A.modelo = B.modelo  
+    WHERE A.color LIKE '%$color%' AND B.precio between '$precio1' AND '$precio2' 
+    AND A.categoria ='$categoria';";
+
+    if($query = mysqli_query($conexion_uno, $sql)){
+
+        if(mysqli_num_rows($query)>0){
+
+            while( $row = mysqli_fetch_array($query) ) { 
+
+                $aResponse[] = $row; 
+
+            }
+
+        }
+
+    }
+
+    return $aResponse;
+
+
+}
+
+function fnGetFiltroProductos($categoria,$precio1,$precio2,$color,$start,$num_pag){
+
+    $conexion_uno = fnConexion();
+
+    $aResponse = array();
+
+    $sql="SELECT A.*,B.precio
+    FROM bran_productos A 
+    JOIN precios_promoopcion B ON A.modelo = B.modelo  
+    WHERE A.color LIKE '%$color%' AND B.precio between '$precio1' AND '$precio2' 
+    AND A.categoria ='$categoria' LIMIT $start, $num_pag;";
+
+    if($query = mysqli_query($conexion_uno, $sql)){
+
+        if(mysqli_num_rows($query)>0){
+
+            while( $row = mysqli_fetch_array($query) ) { 
+
+                $aResponse[] = $row; 
+
+            }
+
+        }
+
+    }
+
+    return $aResponse;
+
+
+}
+
+
 
 
 
