@@ -4,9 +4,10 @@ include './funciones/cFunciones.php';
 
 $id= $_GET['id'];
 
-$Productos = fnGetproducto($id);
+$productos = fnGetproducto($id);
 $colores = fnGetColores($id);
 $tecnica = fnGetTecnica($id);
+
 ?>
 
 <div class="row">
@@ -25,7 +26,7 @@ $tecnica = fnGetTecnica($id);
 					</div>
 
 					<div class="col-sm-6">
-						<?php foreach($Productos as $k =>$v): ?>
+						<?php foreach($productos as $k =>$v): ?>
 
 							<h3 style="color: black;"><?php print $v['nombre']; ?></h3>
 							<h5 style="color: black;"><?php print $v['modelo']; ?></h5>
@@ -77,7 +78,7 @@ $tecnica = fnGetTecnica($id);
 							</table>
 						<?php endforeach; ?>
 
-							<form class="form-horizontal" action="./php/AccionCarta.php?id=<?php print $productos[0]['modelo']; ?>&action=addToCart&p=<?php print $Productos[0]['precio'] ?>" method="POST">
+							<form class="form-horizontal" action="./php/AccionCarta.php?id=<?php print $productos[0]['modelo']; ?>&action=addToCart&p=<?php print $productos[0]['precio'] ?>" method="POST">
 								<div class="form-group">
 									<label class="control-label col-sm-3" style="text-align: left">Técnica:</label>
 									<div class="col-sm-5">          

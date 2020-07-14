@@ -85,9 +85,8 @@
         <?php include './nav/nav_prin.php'; ?>
 
         <?php include './php/productos_consulta.php';?>
-        
 
-        <a href="productos.php"><img src="promos/ban.png" class="img-responsive slide" alt="banner" title="banner"></a>
+        <!--<a href="productos.php"><img src="promos/ban.png" class="img-responsive slide" alt="banner" title="banner"></a>-->
         
         <?php include './nav/footer.php'; ?>
 

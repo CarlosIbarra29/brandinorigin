@@ -181,7 +181,7 @@ if ($importadora == 'promoopcion'){
                     </thead>
                     <tbody>
                         <?php for($i=0;$i<count($data);$i++):?>
-                            <?php if ($data[$i]['id_articulo']== $producto):?>
+                            <?php if ($data[$i]['id_articulo'] == $producto):?>
                                 <tr>
                                     <td><?php print $data[$i]["color"]?></td>
                                     <td><?php print $data[$i]["disponible"]?></td>

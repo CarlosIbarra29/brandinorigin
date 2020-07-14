@@ -12,6 +12,7 @@ $unidades = $_POST['unidades'];
 $precio_inicio = $_REQUEST['p'];
 
 
+
 if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
 
     if ($_REQUEST['action'] == 'addToCart' && !empty($_REQUEST['id'])) {
