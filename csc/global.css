@@ -23,7 +23,6 @@ body{
 }
 
 
-
 h2 {
     text-transform: uppercase;
     color: #3c3c3c;
@@ -190,8 +189,13 @@ footer .glyphicon {
     padding-top: -2px;
 }*/
 
+.cat_font_p{
+font-size: 10px !important; 
+
+}
+
 .cat_font{
-font-size: 9.5px;
+font-size: 8px ;
 
 }
 

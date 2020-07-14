@@ -27,7 +27,8 @@ $tecnica = fnGetTecnica($id);
 					<div class="col-sm-6">
 						<?php foreach($Productos as $k =>$v): ?>
 
-							<h4 style="color: black;"><?php print $v['modelo']; ?></h4>
+							<h3 style="color: black;"><?php print $v['nombre']; ?></h3>
+							<h5 style="color: black;"><?php print $v['modelo']; ?></h5>
 							<p style="color: black;"><?php print $v['descripcion']?></p>
 							<hr>
 							<h4 style="color: black;">DESCRIPCIÓN Y CARACTERÍSTICAS</h4>
@@ -43,6 +44,8 @@ $tecnica = fnGetTecnica($id);
 							<?php endif ?>	
 							
 							<p>Area impresión: <?php print $v['area_impresion']; ?></p>
+
+							<h6 style="color: red;"><b>*Revisa la(s) técnica(s) de IMPRESIÓN disponible(s), antes de elegir.</b></h6>
 
 							<hr>
 							
@@ -69,7 +72,7 @@ $tecnica = fnGetTecnica($id);
 									<tr>
 										<td>3001 en adelante.</td>
 										<td style="color: red">$ <?php echo number_format($v['precio'] / 0.85, 2) ?></td>
-									</tr>
+						 			</tr>
 								</tbody>
 							</table>
 						<?php endforeach; ?>

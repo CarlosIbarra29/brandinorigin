@@ -13,7 +13,7 @@ $apellidos = $_GET['apellidos'];
 $email = $_GET['email'];
 $telefono = $_GET['telefono'];
 
-//include './session_start.php';
+// include './session_start.php';
 
 $us = $_GET['us'];
 ?>
@@ -279,7 +279,7 @@ $us = $_GET['us'];
                 </div>
                 <div class="col-sm-4">
                     <h4 style="color: white">CONTACTO</h4>  
-                    <p style="color: white">WhatsApp:   +52 1 55 6791 9161</p>
+                    <p style="color: white">WhatsApp:   +52 1 55 1483 3209</p>
                     <p style="color: white">(55) 7090 8638 | (55) 7090 8639</p>
                     <p style="color: white">contacto@3abranding.com</p>	
 

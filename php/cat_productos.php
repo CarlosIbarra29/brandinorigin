@@ -13,7 +13,7 @@ $categorias = fnGetCat_Pro();
 
 <?php foreach ($categorias as $k => $v):?>
     
-    <article class="col-md-2 col-sm-6 col-xs-4  cat" >
+    <article class="col-md-2 col-sm-6 col-xs-6 " >
         <br>
         <div class="row">
             <div class="col-md-12 col-sm-12 text-left">

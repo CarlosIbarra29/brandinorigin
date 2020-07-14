@@ -21,7 +21,7 @@ and open the template in the editor.
         </div>
         <div class="col-sm-4">
             <h4 style="color: white">CONTACTO</h4>  
-            <p style="color: white">WhatsApp:   +52 1 55 6791 9161</p>
+            <p style="color: white">WhatsApp:   +52 1 55 1483 3209</p>
             <p style="color: white">(55) 7090 8638 | (55) 7090 8639</p>
             <p style="color: white">contacto@3abranding.com</p>	
 

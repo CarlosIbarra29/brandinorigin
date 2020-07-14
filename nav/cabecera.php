@@ -49,14 +49,14 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="csc/global.css">
     <link rel="stylesheet" href="csc/jquery-ui.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <!-- <link rel="stylesheet" href="csc/font-awesome.min.css">
+    <link rel="stylesheet" href="csc/styles.css"> -->
     <link rel="stylesheet" href="csc/css_whats.css">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-
+ 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152042099-1"></script>
     <script>

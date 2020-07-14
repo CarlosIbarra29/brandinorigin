@@ -71,8 +71,9 @@ endif;?>
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12 col-sm-6 col-xs-4 text-center">
-                    <h4>Se encontraron <b>"<?php print $num_total_rows ?>"</b> registros.</h4>
+                <div class="col-md-12 col-sm-6 col-xs-12 text-center">
+                    <h4>Se encontraron <b>"<?php print $num_total_rows ?>"</b> registros.
+                    </h4>
                 </div>
             </div>
         </div>
@@ -81,20 +82,23 @@ endif;?>
  
 
     <articles class="row">
-
         <?php foreach ($result as $k => $v): ?>
-            <article class="col-md-2 col-sm-6 col-xs-4" style="padding: 1px 1px 1px;" >
+            <article class="col-md-2 col-sm-4 col-xs-6" style="padding: 1px 1px 1px;" >
                 <div class="row">
                     <div class="col-sm-12 text-center">
-                        <a class="img-thumbnail" href="./vistaproducto.php?id=<?php echo $v['modelo']?>&img=<?php echo $v['modelo'] ?>&num_ar=<?php print $articulos?>" style="color: #fff; padding: 1%;" data-title="<?php echo $v['modelo'] ?>">  
-
-                            <img  title="<?php echo $v['modelo']; ?>" alt="<?php echo $v['modelo']; ?>" src="<?php echo $v['img']; ?>" height="150px">
+                        <a class="img-thumbnail" href="./vistaproducto.php?id=<?php echo $v['modelo']?>&img=<?php echo $v['modelo'] ?>&num_ar=<?php print $articulos?>" style="color: #fff; padding: 1%;" data-title="<?php echo $v['modelo'] ?>">
+                            <img  title="<?php echo $v['modelo']; ?>" alt="<?php echo $v['modelo']; ?>" src="<?php echo $v['img']; ?>" height="130px">
                             <p class="productos">
-                                Desde <b>$<?php $precio = $v['precio']; echo number_format($precio / 0.85, 2);?></b>
+                                <b><?php $modelo = $v['modelo']; echo $modelo;?></b>
+                            </p>
+                            <br>
+                            <p class="productos">
+                               Desde <b>$<?php $precio = $v['precio']; echo number_format($precio / 0.85, 2);?></b>
                             </p>
                         </a>
                     </div>
-                </div><br>
+                </div>
+                <br>
 
                 <div class="row">
                     <div class="col-sm-12 text-center">
@@ -104,19 +108,17 @@ endif;?>
                         </button>
                         </form>
                     </div>
-                </div><br>
+                </div>
             </article>
         <?php endforeach; ?>
-
     </articles>
 
- 
-  
-            
+
 <?php else: ?>
 
     <div class="alert alert-danger alert-dismissible fade in">
-        <a href="./productos.php" class="close" data-dismiss="alert" aria-label="close">&times;</a><br>
+        <a href="./productos.php" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <br>
         <strong>Sin Resultado de busqueda!</strong>.
     </div>
 
@@ -142,8 +144,12 @@ endif;?>
 
         <?php if($productos==NULL):?>
 
-            <h4><a style="cursor: pointer; font-size: 14px; color: #3c3c3c;" href="./productos.php?<?php print $urlpag ?>&pag=<?php echo $num_pag * 2 ?>">Ver Más</a></h4>
-            <h4><a href="#myPage" title="To Top" ><span class="glyphicon glyphicon-chevron-up"></span></a></h4>
+            <h4>
+                <a style="cursor: pointer; font-size: 14px; color: #3c3c3c;" href="./productos.php?<?php print $urlpag ?>&pag=<?php echo $num_pag * 2 ?>">Ver Más</a>
+            </h4>
+            <h4>
+                <a href="#myPage" title="To Top" ><span class="glyphicon glyphicon-chevron-up"></span></a>
+            </h4>
 
         <?php endif;?>
 
@@ -204,7 +210,8 @@ endif;?>
 
             <li class="page-item">
                 <a class="page-link" href="productos.php?page=<?php echo ($page + 1) ?>&<?php print $urlpag ?>">
-                <span aria-hidden="true">&raquo;</span></a>
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
             </li>
 
         <?php endif; ?>
