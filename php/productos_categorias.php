@@ -66,11 +66,23 @@ if (isset($productos)):
 endif;?>
 
 <?php if(isset($filtro)):
-  
-$categoria='ACC COMPUTO';
-$precio1='1';
-$precio2='300';
-$color= 'A';   
+
+
+if (isset($categoria)||isset($precio1)||isset($precio2)||isset($color)){
+
+    $categoria=$_POST['categoria'];
+    $precio1=$_POST['precio1'];
+    $precio2=$_POST['precio2'];
+    $color= $_POST['color']; 
+
+}else{
+
+    $categoria='';
+    $precio1='0';
+    $precio2='9999';
+    $color= '';
+
+}
 
 $filtroBusqueda = fnGetFiltroProductosCount($categoria,$precio1,$precio2,$color);
 

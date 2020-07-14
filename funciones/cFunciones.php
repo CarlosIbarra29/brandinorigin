@@ -858,7 +858,7 @@ function fnGetFiltroProductosCount($categoria,$precio1,$precio2,$color){
     FROM bran_productos A 
     JOIN precios_promoopcion B ON A.modelo = B.modelo  
     WHERE A.color LIKE '%$color%' AND B.precio between '$precio1' AND '$precio2' 
-    AND A.categoria ='$categoria';";
+    AND A.categoria LIKE'%$categoria%';";
 
     if($query = mysqli_query($conexion_uno, $sql)){
 
@@ -889,7 +889,7 @@ function fnGetFiltroProductos($categoria,$precio1,$precio2,$color,$start,$num_pa
     FROM bran_productos A 
     JOIN precios_promoopcion B ON A.modelo = B.modelo  
     WHERE A.color LIKE '%$color%' AND B.precio between '$precio1' AND '$precio2' 
-    AND A.categoria ='$categoria' LIMIT $start, $num_pag;";
+    AND A.categoria LIKE '%$categoria%' LIMIT $start, $num_pag;";
 
     if($query = mysqli_query($conexion_uno, $sql)){
 
