@@ -4,7 +4,7 @@ include './funciones/cFunciones.php';
 
 $aDataProductos = fnGetproductosPrincipal();
 
-$categorias = fnGetCategoriasP();
+$categorias = fnGetCat_Pro();
 
 $banner= fnGetBanners();
 
@@ -60,26 +60,27 @@ $articulos = $_GET['num_ar'];
     </div>
 </div>
 </div>
-<div class="container-fluid col-sm-12 text-center bg-grey">
+<div class="container col-sm-12 text-center bg-gray">
     <article class="row">
 <?php foreach ($categorias as $k => $v):?>
- 
-	<article class="col-md-2 col-sm-6 col-xs-6 " style="padding: 1px 1px 1px;" >
-		<br>
-		<div class="row">
-			<div class="col-sm-12 text-center">
-				<a href="./productos.php?categoria=<?php echo $v['nombre_cat'] ?>" style="color: #fff; padding: 1%;" data-title="<?php echo $v['nombre_cat'] ?>">
-					<img  title="<?php echo $v['nombre_cat']; ?>" alt="<?php echo $v['nombre_cat']; ?>" src="<?php echo $v['img_cat']; ?>" height="30px"  / >
-				</a><br><br>
-				<p style="color: black" class="categorias cat_font_p">
-					<b><?php echo ($v['nombre_cat']);?>
-						</b>
-					</p><br>
-			</div>
-		</div>
-	</article>
-	
+    
+    <article class="col-md-2 col-sm-6 col-xs-6 " >
+        <br>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 text-left">
+                <a href="./productos.php?categoria=<?php echo $v['nombre_cat'] ?>" style="color: #fff; padding: 1%;" data-title="<?php echo $v['nombre_cat'] ?>">
+                    <img align="left" title="<?php echo $v['nombre_cat']; ?>" alt="<?php echo $v['nombre_cat']; ?>" src="<?php echo $v['img_cat']; ?>" height="30px">               
+                <b align="left" style="color: black" class="categorias cat_font">
+                    <b> &nbsp;&nbsp; <?php echo ($v['nombre_cat']);?></b>
+                </b>
+                </a>
+            </div>
+        </div>
+    </article>
+    
 <?php endforeach;?>
-</article>
+</article><br>
 </div>
+
+
 
