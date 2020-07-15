@@ -8,6 +8,19 @@ $productos = fnGetproducto($id);
 $colores = fnGetColores($id);
 $tecnica = fnGetTecnica($id);
 
+if ($productos[0]['importadora']=='forpromotional'){
+
+	$precio =$productos[0]['precio']-($productos[0]['precio']*.15);
+
+}else {
+
+	$precio =$productos[0]['precio'];
+}
+
+
+
+							
+
 ?>
 
 <div class="row">
@@ -60,25 +73,25 @@ $tecnica = fnGetTecnica($id);
 								<tbody>
 									<tr>
 										<td>1 a 100 piezas.</td>
-										<td style="color: red">$ <?php echo number_format($v['precio'] / 0.7, 2) ?></td>
+										<td style="color: red">$ <?php echo number_format($precio / 0.7, 2) ?></td>
 									</tr>
 									<tr>
 										<td>101 a 500 piezas.</td>
-										<td style="color: red">$ <?php echo number_format($v['precio'] / 0.75, 2) ?></td>
+										<td style="color: red">$ <?php echo number_format($precio / 0.75, 2) ?></td>
 									</tr>
 									<tr>
 										<td>501 a 3000 piezas.</td>
-										<td style="color: red">$ <?php echo number_format($v['precio'] / 0.8, 2) ?></td>
+										<td style="color: red">$ <?php echo number_format($precio / 0.8, 2) ?></td>
 									</tr>
 									<tr>
 										<td>3001 en adelante.</td>
-										<td style="color: red">$ <?php echo number_format($v['precio'] / 0.85, 2) ?></td>
+										<td style="color: red">$ <?php echo number_format($precio / 0.85, 2) ?></td>
 						 			</tr>
 								</tbody>
 							</table>
 						<?php endforeach; ?>
 
-							<form class="form-horizontal" action="./php/AccionCarta.php?id=<?php print $productos[0]['modelo']; ?>&action=addToCart&p=<?php print $productos[0]['precio'] ?>" method="POST">
+							<form class="form-horizontal" action="./php/AccionCarta.php?id=<?php print $productos[0]['modelo']; ?>&action=addToCart&p=<?php print $precio ?>" method="POST">
 								<div class="form-group">
 									<label class="control-label col-sm-3" style="text-align: left">Técnica:</label>
 									<div class="col-sm-5">          
