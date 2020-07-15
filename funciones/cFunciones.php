@@ -847,7 +847,6 @@ function fnGetBanners(){
 }
 
 
-
 function fnGetFiltroProductosCount($categoria,$precio1,$precio2,$color){
 
     $conexion_uno = fnConexion();
@@ -875,7 +874,6 @@ function fnGetFiltroProductosCount($categoria,$precio1,$precio2,$color){
     }
 
     return $aResponse;
-
 
 }
 
@@ -907,6 +905,31 @@ function fnGetFiltroProductos($categoria,$precio1,$precio2,$color,$start,$num_pa
 
     return $aResponse;
 
+}
+
+function fnGetColoresFiltro(){
+
+    $conexion_uno = fnConexion();
+
+    $aResponse = array();
+
+    $sql ="SELECT * FROM colors;";
+
+    if($query = mysqli_query($conexion_uno, $sql)){
+
+        if(mysqli_num_rows($query)>0){
+
+            while( $row = mysqli_fetch_array($query) ) { 
+
+                $aResponse[] = $row; 
+
+            }
+
+        }
+
+    }
+
+    return $aResponse;
 
 }
 
