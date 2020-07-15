@@ -23,9 +23,9 @@ $articulos = $_GET['num_ar'];
 	<a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span><span class="sr-only">Previous</span></a>
 	<a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span><span class="sr-only">Next</span></a>
 </div>
-
+<div class="container-fluid">
 <div class="row">
-	<div class="container-fluid">
+	
 	<h3 class="text-center">Productos relevantes.</h3><br>
 	<?php foreach ($aDataProductos as $k => $v):?>
 		<article class="col-md-2 col-sm-6 col-xs-6" style="padding: 1px 1px 1px;" >
@@ -60,9 +60,11 @@ $articulos = $_GET['num_ar'];
     </div>
 </div>
 </div>
+<div class="container-fluid col-sm-12 text-center bg-grey">
+    <article class="row">
 <?php foreach ($categorias as $k => $v):?>
-
-	<article class="col-md-2 col-sm-6 col-xs-6 bg-grey" style="padding: 1px 1px 1px;" >
+ 
+	<article class="col-md-2 col-sm-6 col-xs-6 " style="padding: 1px 1px 1px;" >
 		<br>
 		<div class="row">
 			<div class="col-sm-12 text-center">
@@ -78,5 +80,6 @@ $articulos = $_GET['num_ar'];
 	</article>
 	
 <?php endforeach;?>
-
+</article>
+</div>
 

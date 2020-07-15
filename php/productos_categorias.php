@@ -1,3 +1,4 @@
+
 <?php 
 
 
@@ -8,7 +9,8 @@ $v_clave = $_GET['palabra_clave'];
 $categorias = $_GET['categoria'];
 $productos = $_GET['productos'];
 $filtro = $_GET['filtro'];
-
+$colores_filtro= fnGetColoresFiltro();
+$categorias_filtro=fnGetCat_Pro();
 
 $num_pag = $_GET['pag'];
 
@@ -68,21 +70,12 @@ endif;?>
 <?php if(isset($filtro)):
 
 
-if (isset($categoria)||isset($precio1)||isset($precio2)||isset($color)){
 
     $categoria=$_POST['categoria'];
     $precio1=$_POST['precio1'];
     $precio2=$_POST['precio2'];
     $color= $_POST['color']; 
 
-}else{
-
-    $categoria='';
-    $precio1='0';
-    $precio2='9999';
-    $color= '';
-
-}
 
 $filtroBusqueda = fnGetFiltroProductosCount($categoria,$precio1,$precio2,$color);
 
@@ -104,7 +97,7 @@ endif;?>
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12 col-sm-6 col-xs-12 text-center">
+                <div class="col-md-12 col-sm-12 col-xs-12 text-center">
                     <h4>Se encontraron <b>"<?php print $num_total_rows ?>"</b> registros.
                     </h4>
                 </div>
@@ -112,11 +105,67 @@ endif;?>
         </div>
 
     <?php endif;?>  
- 
 
+ <?php if ($productos== NULL):?>
+ <div class="container col-md-12">
+
+    <div class="col-md-4 col-sm-12 col-xs-12 text-center">
+        <articles class="row">
+            <h3>Busqueda Avanzada</h3>
+             <hr class="hr_p">
+             <a href="#busquedas" class="btn btn-info" data-toggle="collapse">Buscar Ahora</a>
+             <br>
+
+             <div id="busquedas" class="collapse">
+                <form action="productos.php?filtro=filtro" method="post"> <br>
+                    <div class="row">
+                        <label class="control-label col-xs-12">Precio:</label>
+                        <div class="col-sm-12">
+                            <input type="number" class="form-control input-sm" placeholder="$0.00 min" required="" name="precio1">
+                        </div>
+                        <label class="control-label col-xs-1"></label>
+                        <div class="col-sm-12 col-xs-12">
+                            <input type="number" class="form-control input-sm" placeholder="$0.00 max" required="" name="precio2">
+                        </div>
+                    </div><br>
+
+                    <div class="row">
+                    <label class="control-label col-sm-6 col-xs-6">Categoria:</label>
+                    <label class="control-label col-sm-6 col-xs-6" >Color:</label>
+
+                        <div class="col-sm-6 col-xs-6">
+                            <select class = "form-control input-sm" required="" name = "categoria" >
+                                <option></option>    
+                                <?php foreach ($categorias_filtro as $key => $value):?>
+                                    <option value="<?php print $value['nombre_cat'] ?>"><?php print $value['nombre_cat'] ?></option>
+                                <?php endforeach; ?>
+                                     
+                            </select>
+                        </div>
+
+                        <div class="col-sm-6 col-xs-6">
+                            <select class="form-control input-sm" required="" name="color">
+                                <option></option>
+                                <?php foreach ($colores_filtro as $key => $value):?>
+                                    <option value="<?php print $value['color'] ?>"><?php print $value['color'] ?></option>
+                                <?php endforeach; ?>    
+                            </select>
+                        </div><br>
+                        <label class="control-label col-xs-12"></label>
+
+                        <div class="col-xs-12"> <br>
+                            <button type="submit" class="btn btn-danger input-md"><h4>Buscar</h4></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </articles>
+    </div>
+<?php endif;?>  
+<div class="col-md-8 col-sm-12 col-xs-12 text-center">
     <articles class="row">
         <?php foreach ($result as $k => $v): ?>
-            <article class="col-md-2 col-sm-4 col-xs-6" style="padding: 1px 1px 1px;" >
+            <article class="col-md-3 col-sm-4 col-xs-6" style="padding: 1px 1px 1px;" >
                 <div class="row">
                     <div class="col-sm-12 text-center">
                         <a class="img-thumbnail" href="./vistaproducto.php?id=<?php echo $v['modelo']?>&img=<?php echo $v['modelo'] ?>&num_ar=<?php print $articulos?>" style="color: #fff; padding: 1%;" data-title="<?php echo $v['modelo'] ?>">
@@ -140,12 +189,13 @@ endif;?>
                             Cotizar
                         </button>
                         </form>
+                        <br>
                     </div>
                 </div>
             </article>
-        <?php endforeach; ?>
+        <?php endforeach; ?> 
     </articles>
-
+</div>
 
 <?php else: ?>
 
@@ -156,7 +206,7 @@ endif;?>
     </div>
 
 <?php endif; ?>
-
+</div>
 <nav class="text-center">
     <ul class="pagination pagination-small pagination">
         <?php 

@@ -6,7 +6,11 @@
 
           <?php include './php/productos_categorias.php';?>
 
+
+
         <?php include './nav/footer.php'; ?>
+
+
         <?php include './nav/scripts.php'; ?>
     </body>
 </html>

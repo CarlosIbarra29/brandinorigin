@@ -44,7 +44,7 @@ $us= $_GET['us'];
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="./index.php?num_ar=<?php echo $articulos ?>&us=<?php echo $us ?>">Inicio</a></li>
                 <li><a href="./nosotros.php?num_ar=<?php echo $articulos ?>&us=<?php echo $us ?>">Nosotros</a></li>
-                <li><a href="./productos.php?num_ar=<?php echo $articulos ?>&us=<?php echo $us ?>">Productos</a></li>
+                <li><a href="./productos.php?num_ar=<?php echo $articulos ?>&us=<?php echo $us ?>">Productos</a></li> 
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Servicios
                         <span class="caret"></span></a>
@@ -58,7 +58,7 @@ $us= $_GET['us'];
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Catálogos
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a style="font-size: 11px" href="./catalogos/cat.pdf?num_ar=<?php echo $articulos ?>" download="Catálogo 3A Branding.pdf">Productos 2019</a></li>
+                        <li><a style="font-size: 11px" href="./catalogo.php?num_ar=<?php echo $articulos ?>&us=<?php echo $us ?>">Productos</a></li>
                     </ul>
                 </li>
             </ul>

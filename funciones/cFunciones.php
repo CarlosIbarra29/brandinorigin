@@ -1,5 +1,4 @@
 <?php
-include '../conexion/conexion2.php';
 
 function fnConexion(){
 
@@ -32,9 +31,10 @@ function fnConexion(){
 
 }
 
+
 function fnPrecios($tecnica,$productID,$unidades,$precio_inicio){
 
-	global $conexion;
+	$conexion = fnConexion();
 
     if ($tecnica == "Sin técnica") {//sin tecnica
     	$color = "sin color";
@@ -350,7 +350,7 @@ function fnPrecios($tecnica,$productID,$unidades,$precio_inicio){
 
 function fnInsertarOrden($session,$cart,$fecha,$nom,$tel,$correo){
 
-	global $conexion;
+	$conexion = fnConexion();
 
 	$ordensql="INSERT INTO orden (customer_id, sub_total, created, modified,nombre,telefono,correo)
 	VALUES ('$session','".$cart->total()."','$fecha', '$fecha','$nom','$tel','$correo')";
@@ -846,6 +846,33 @@ function fnGetBanners(){
 
 }
 
+function fnGetCatalogos(){
+
+    $conexion_uno = fnConexion();
+
+    $aResponse = array();
+
+    $sql ="SELECT * FROM cat_3a;";
+
+    if($query = mysqli_query($conexion_uno, $sql)){
+
+        if(mysqli_num_rows($query)>0){
+
+            while( $row = mysqli_fetch_array($query) ) { 
+
+                $aResponse[] = $row; 
+
+            }
+
+        }
+
+    }
+
+    return $aResponse;
+
+}
+
+
 
 function fnGetFiltroProductosCount($categoria,$precio1,$precio2,$color){
 
@@ -857,7 +884,7 @@ function fnGetFiltroProductosCount($categoria,$precio1,$precio2,$color){
     FROM bran_productos A 
     JOIN precios_promoopcion B ON A.modelo = B.modelo  
     WHERE A.color LIKE '%$color%' AND B.precio between '$precio1' AND '$precio2' 
-    AND A.categoria LIKE'%$categoria%';";
+    AND A.categoria = '$categoria';";
 
     if($query = mysqli_query($conexion_uno, $sql)){
 
@@ -887,7 +914,7 @@ function fnGetFiltroProductos($categoria,$precio1,$precio2,$color,$start,$num_pa
     FROM bran_productos A 
     JOIN precios_promoopcion B ON A.modelo = B.modelo  
     WHERE A.color LIKE '%$color%' AND B.precio between '$precio1' AND '$precio2' 
-    AND A.categoria LIKE '%$categoria%' LIMIT $start, $num_pag;";
+    AND A.categoria = '$categoria' LIMIT $start, $num_pag;";
 
     if($query = mysqli_query($conexion_uno, $sql)){
 

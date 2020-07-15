@@ -62,7 +62,7 @@ $us= $_GET['us'];
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Catálogos
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a style="font-size: 11px" href="./catalogo.php?num_ar=<?php echo $articulos ?>&us=<?php echo $us ?>">Productos 2019</a></li>
+                        <li><a style="font-size: 11px" href="./catalogo.php?num_ar=<?php echo $articulos ?>&us=<?php echo $us ?>">Productos</a></li>
                     </ul>
                 </li>
             </ul>

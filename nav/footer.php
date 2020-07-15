@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 
 
-<div class="container-fluid" style="background-color:#3c3c3c">
+<div class="container-fluid col-sm-12" style="background-color:#3c3c3c">
     <div class="row">
         <div class="col-sm-4">
             <h4 style="color: white">3A BRANDING GROUP</h4>  
@@ -71,7 +71,7 @@ and open the template in the editor.
 </div>
 
 
-<footer class="container-fluid text-center footer_color">
+<footer class="container-fluid col-sm-12 text-center footer_color">
     <div id="float-cta">
         <span>Cotiza en tiempo real
             ¡Envíanos un WhatsApp!
