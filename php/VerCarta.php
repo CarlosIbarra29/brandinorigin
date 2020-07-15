@@ -368,7 +368,7 @@ $us = $_GET['us'];
                 </a>
             </div>
 
-            <p>2019 © 3A Branding - <a href="" style="color:#fff" data-toggle="modal" data-target="#myModal"> Aviso de Privacidad</a></p>
+            <p>2020 © 3A Branding - <a href="" style="color:#fff" data-toggle="modal" data-target="#myModal"> Aviso de Privacidad</a></p>
             <div class="modal fade" id="myModal" role="dialog" style="padding-top: 2px; ">
                 <div class="modal-dialog">
 
