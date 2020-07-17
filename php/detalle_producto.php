@@ -7,21 +7,10 @@ $id= $_GET['id'];
 $productos = fnGetproducto($id);
 $colores = fnGetColores($id);
 $tecnica = fnGetTecnica($id);
-
-if ($productos[0]['importadora']=='forpromotional'){
-
-	$precio =$productos[0]['precio']-($productos[0]['precio']*.15);
-
-}else {
-
-	$precio =$productos[0]['precio'];
-}
-
-
-
-							
-
+					
 ?>
+
+
 
 <div class="row">
 	<div class="col-sm-12 col-xs-12">
@@ -34,7 +23,25 @@ if ($productos[0]['importadora']=='forpromotional'){
 
 					<div class="col-sm-6 text-center ">
 
-						<?php include './php/detalle_img.php'; ?>
+						<?php include './php/detalle_img.php'; 
+
+						if ($productos[0]['importadora']=='forpromotional'){
+
+							$precio =$productos[0]['precio']-($productos[0]['precio']*.15);
+
+						}elseif ($productos[0]['importadora']=='doblevela') {
+
+							$precio= $precios_doblevela;
+							
+						}else{
+
+							$precio =$productos[0]['precio'];
+							
+						}
+
+
+						?>
+
 
 					</div>
 

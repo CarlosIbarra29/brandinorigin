@@ -112,6 +112,10 @@ if ($importadora == 'promoopcion'){
 
                 $jsonExis = $obj->{'Resultado'};
 
+                $precios_doblevela= $jsonExis[0]->{'Price'};
+
+               
+
                 ?>
 
                 <?php foreach ($imagen as $k => $v):?>
@@ -133,6 +137,8 @@ if ($importadora == 'promoopcion'){
                     </thead>
                     <tbody>
                         <?php for($i=0;$i<count($jsonExis);$i++):?>
+
+                           
                             
                             <tr>
                                 <td><?php print $jsonExis[$i]->{'COLOR'}?></td>
