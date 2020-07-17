@@ -19,14 +19,46 @@ $catalogo_get= fnGetCatalogos();
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-xs-12 text-center">
                     <h3 style="padding-top: 10px;">Catalogos</h3>
+                    <hr class="hr_p">
                 </div>
-            </div>
-            <hr class="hr_p">         
+            </div>           
         </div>
 
 
+        <div class="container col-md-12 text-center">
+            <div class="col-md-4 col-sm-12 col-xs-12 text-center"></div>
+
+            <div class="col-md-4 col-sm-12 col-xs-12 text-center">
+                <div class="row">
+                    <a href="#busquedas" class="btn btn-info" data-toggle="collapse">Ver en Linea</a>
+
+                    <div id="busquedas" class="collapse"><br>
+
+                        <div class="col-md-4 col-sm-4 col-xs-4 text-center">
+                            <a style="font-size: 11px" href="https://online.flippingbook.com/view/925396/" target="_blank">
+                                <button class="btn btn-danger" style="font-size: 9px"><b>Catalogo 1</b>
+                                </button>
+                            </a>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4 text-center">
+                            <a style="font-size: 11px" href="https://catalogos-digitales.promoopcion.com/view/914899/" target="_blank">
+                                <button class="btn btn-danger" style="font-size: 9px "><b>Catalogo 2</b>
+                                </button>
+                            </a>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4 text-center">
+                            <a style="font-size: 11px" href="http://promocionalesweb.com/CATALOGO_PROMOCIONALES_2020_2021/index.html#I" target="_blank">
+                                <button class="btn btn-danger" style="font-size: 9px"><b>Catalogo 3</b>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div><br>
+            </div>
+        </div>
+
         <div class="container-fluid">
-            <div class="row">
+            <div class="row"><br>
 
             <?php foreach ($catalogo_get as $k => $v):?>
 
@@ -37,7 +69,7 @@ $catalogo_get= fnGetCatalogos();
                                 <img src="ser_img/magazine.png" height="100px;"><br>
                             </a>
                             <div class=" col-sm-12 col-md-12 col-xs-12 text-center">
-                                <p><b style="font-size: 14px "><?php echo ($v['nombre']);?></b></p>
+                                <p><b style="font-size: 11px "><?php echo ($v['nombre']);?></b></p>
                             </div>  
                         </div>
                     </div>
