@@ -32,11 +32,8 @@ $articulos = $_GET['num_ar'];
 			<div class="row">
 				<div class="col-sm-12 text-center">
 					<a class="img-thumbnail" href="./vistaproducto.php?id=<?php echo $v['modelo']?>&img=<?php echo $v['modelo'] ?>&num_ar=<?php print $articulos?>" style="color: #fff; padding: 1%;" data-title="<?php echo $v['modelo'] ?>">	
-						<img  title="<?php echo $v['modelo']; ?>" alt="<?php echo $v['modelo']; ?>" src="<?php echo $v['img']; ?>" height="130px">
-						<p class="productos"><b><?php $modelo = $v['modelo']; echo $modelo;?></b></p>
-						<br>
-						<p class="productos">Desde <b>$<?php $precio = $v['precio']; echo number_format($precio / 0.85, 2);?></b></p>
-
+						<img  title="<?php echo $v['modelo']; ?>" alt="<?php echo $v['modelo']; ?>" src="<?php echo $v['img']; ?>" height="130px"><br><br>
+						<p class="productos" style="font-size: 15px"><b><?php $modelo = $v['modelo']; echo $modelo;?></b></p>
 						<br>
 					</a>
 				</div>
