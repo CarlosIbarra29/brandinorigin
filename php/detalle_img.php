@@ -79,7 +79,7 @@ if ($importadora == 'promoopcion'){
                             <td>
                                 <?php foreach($existencias as $Ficha): ?>
                                     <?php foreach($Ficha as $detalles =>$valor): ?>
-                                        <p><?php print round($valor['Stok'],0)?></p>
+                                        <p><?php print number_format($valor['Stok'],0)?></p>
                                     <?php endforeach;?>
                                 <?php endforeach; ?>
                             </td>
@@ -140,7 +140,7 @@ if ($importadora == 'promoopcion'){
                             
                             <tr>
                                 <td><?php print $jsonExis[$i]->{'COLOR'}?></td>
-                                <td><?php print $jsonExis[$i]->{'EXISTENCIAS'}?></td>
+                                <td><?php print number_format($jsonExis[$i]->{'EXISTENCIAS'})?></td>
                             </tr>
                         <?php endfor;?>
                     </tbody>
@@ -189,7 +189,7 @@ if ($importadora == 'promoopcion'){
                             <?php if ($data[$i]['id_articulo'] == $producto):?>
                                 <tr>
                                     <td><?php print $data[$i]["color"]?></td>
-                                    <td><?php print $data[$i]["disponible"]?></td>
+                                    <td><?php print number_format($jsonExis[$i]->{'disponible'})?></td>
                                 </tr>
                             <?php endif;?>    
                         <?php endfor;?>
