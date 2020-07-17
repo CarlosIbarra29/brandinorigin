@@ -25,19 +25,21 @@ $tecnica = fnGetTecnica($id);
 
 						<?php include './php/detalle_img.php'; 
 
+
 						if ($productos[0]['importadora']=='forpromotional'){
 
-							$precio =$productos[0]['precio']-($productos[0]['precio']*.15);
+							$precio = $precio_for;
 
 						}elseif ($productos[0]['importadora']=='doblevela') {
 
 							$precio= $precios_doblevela;
 							
-						}else{
+						}elseif ($productos[0]['importadora']=='promoopcion') {
 
 							$precio =$productos[0]['precio'];
 							
 						}
+
 
 
 						?>
