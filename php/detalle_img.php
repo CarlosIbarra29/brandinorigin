@@ -150,7 +150,6 @@ if ($importadora == 'promoopcion'){
         </div>
     </div>
 
-
 <?php elseif ($importadora=='forpromotional'):?>
 
 

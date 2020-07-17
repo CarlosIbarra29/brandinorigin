@@ -39,8 +39,7 @@ $tecnica = fnGetTecnica($id);
 							$precio =$productos[0]['precio'];
 							
 						}
-
-
+						
 
 						?>
 
