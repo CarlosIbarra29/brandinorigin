@@ -29,17 +29,20 @@ $tecnica = fnGetTecnica($id);
 						if ($productos[0]['importadora']=='forpromotional'){
 
 							$precio = $precio_for;
+							$descripcion = $descripcion_for;
 
 						}elseif ($productos[0]['importadora']=='doblevela') {
 
 							$precio= $precios_doblevela;
+							$descripcion= $descripcion_doblevela;
 							
 						}elseif ($productos[0]['importadora']=='promoopcion') {
 
 							$precio =$productos[0]['precio'];
+							$descripcion = $productos[0]['descripcion'];
 							
 						}
-						
+
 
 						?>
 
@@ -51,10 +54,9 @@ $tecnica = fnGetTecnica($id);
 
 							<h3 style="color: black;"><?php print $v['nombre']; ?></h3>
 							<h5 style="color: black;"><?php print $v['modelo']; ?></h5>
-							<p style="color: black;"><?php print $v['descripcion']?></p>
 							<hr>
 							<h4 style="color: black;">DESCRIPCIÓN Y CARACTERÍSTICAS</h4>
-							<p style="color: black;"><b><?php print $v['Des2']; ?></p>
+							<p style="color: black;"><?php print $descripcion; ?></p>
 							<hr>
 							<p>Colores: <?php print $v['colores']; ?></p>
 							<p>Tamaño: <?php print $v['tamanio']; ?></p>

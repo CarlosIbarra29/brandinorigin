@@ -114,6 +114,8 @@ if ($importadora == 'promoopcion'){
 
                 $precios_doblevela= $jsonExis[0]->{'Price'};
 
+                $descripcion_doblevela= $jsonExis[0]->{'Descripcion'};
+
                 ?>
 
                 <?php foreach ($imagen as $k => $v):?>
@@ -163,6 +165,7 @@ if ($importadora == 'promoopcion'){
                 $data = json_decode(file_get_contents('http://forpromotional.homelinux.com:9090/WsEstrategia/inventario'),true);
                 $producto = $imagen[0]['modelo'];
                 $precio_for= $data[0]["precio"];
+                $descripcion_for = $data[0]["descripcion"];
 
                 ?>
 
