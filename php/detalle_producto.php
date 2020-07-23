@@ -60,14 +60,24 @@ $tecnica = fnGetTecnica($id);
 							<hr>
 							<p>Colores: <?php print $v['colores']; ?></p>
 							<p>Tamaño: <?php print $v['tamanio']; ?></p>
-							<p>Material: <?php print $v['material']; ?></p>
-							<?php if($v['impresión']=''): ?>
-								 <p>Técnica impresión: Sin técnica</p>	
+							<?php if($v['material']==NULL): ?>
+								 <p>Material: N/A</p>	
+							<?php else: ?>
+								<p>Material: <?php print $v['material']; ?></p>
+							<?php endif ?>	
+
+							<?php if($v['impresion']==NULL): ?>
+								 <p>Técnica impresión: N/A</p>	
 							<?php else: ?>
 								<p>Técnica impresión: <?php print $v['impresion']; ?></p>
 							<?php endif ?>	
 							
-							<p>Area impresión: <?php print $v['area_impresion']; ?></p>
+							<?php if($v['area_impresion']==NULL): ?>
+								 <p>Area impresión: N/A</p>	
+							<?php else: ?>
+								<p>Area impresión: <?php print $v['area_impresion']; ?></p>
+							<?php endif ?>	
+							
 
 							<h6 style="color: red;"><b>*Revisa la(s) técnica(s) de IMPRESIÓN disponible(s), antes de elegir.</b></h6>
 

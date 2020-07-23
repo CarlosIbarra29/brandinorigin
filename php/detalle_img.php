@@ -191,7 +191,7 @@ if ($importadora == 'promoopcion'){
                             <?php if ($data[$i]['id_articulo'] == $producto):?>
                                 <tr>
                                     <td><?php print $data[$i]["color"]?></td>
-                                    <td><?php print number_format($jsonExis[$i]->{'disponible'})?></td>
+                                    <td><?php print number_format($data[$i]['disponible'])?></td>
                                 </tr>
                             <?php endif;?>    
                         <?php endfor;?>

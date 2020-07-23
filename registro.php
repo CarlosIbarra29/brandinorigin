@@ -133,10 +133,10 @@ if ($usuario_ac == "") {
                                                 <input type="checkbox" tabindex="3" class="" name="terminos" id="remember" required="">
                                                 He leído y acepto que mis datos serán tratados conforme al aviso de privacidad que se encuentra <label><a href="" style="color:#3c3c3c" data-toggle="modal" data-target="#myModal">aquí.</a></label>
                                             </div>
-                                            <div class="form-group text-center">
+                                           <!--  <div class="form-group text-center">
                                                 <input type="checkbox" tabindex="3" class="" name="promos" id="remember" >
                                                 Deseo Recibir Promociones y anuncios.
-                                            </div>
+                                            </div> -->
                                             <div class="form-group text-center">
                                                 <div class="row">
                                                     <div class="col-sm-4"></div>
