@@ -143,7 +143,7 @@
             </div><br><br><br>
         </div>
         <?php include './nav/footer.php'; ?>
-        <?php include './nav/scripts.php'; ?>
+        <?php include './nav/scripts.php'; ?> 
     </body>
 </html>
 
