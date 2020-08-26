@@ -978,10 +978,11 @@ function getLogin($usuario,$password){
 
             session_start();
 
-            $aResponse['estatus'] = true;
+            $aResponse['estatus'] = true
+            ;
             $_SESSION['user_id'] = $row['id'] ;
             $_SESSION['nombre'] = $row['nombre'];
-            $_SESSION['usuario'] = $row['usuario'];
+            $_SESSION['usuario'] = $row['nombre'];
             $_SESSION['user_login_status'] = 1;
 
         } else {
