@@ -1,7 +1,11 @@
 <?php 
 
+session_start();
+
 include_once './funciones/cFunciones.php';
+
 error_reporting(0); 
+
 $catalogo_get= fnGetCatalogos();
 
 ?>

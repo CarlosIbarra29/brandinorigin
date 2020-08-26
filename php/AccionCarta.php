@@ -2,6 +2,7 @@
 
 
 include './La-carta.php';
+
 include '../funciones/cFunciones.php';
 
 $cart = new Cart;
@@ -40,7 +41,9 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
         $correo = $_GET['e'];
 
         $session= $_SESSION['sessCustomerID'];
+        
         $cart->total_items();
+
         $fecha =  date("Y-m-d H:i:s");
 
         $orden = fnInsertarOrden($session,$cart,$fecha,$nom,$tel,$correo); 

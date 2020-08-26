@@ -26,6 +26,7 @@ class Cart {
 
         // remove these so they don't create a problem when showing the cart table
         unset($cart['total_items']);
+
         unset($cart['cart_total']);
 
         return $cart;
@@ -37,6 +38,7 @@ class Cart {
      * @return	array
      */
     public function get_item($row_id) {
+        
         return (in_array($row_id, array('total_items', 'cart_total'), TRUE) OR ! isset($this->cart_contents[$row_id])) ? FALSE : $this->cart_contents[$row_id];
     }
 
@@ -45,6 +47,7 @@ class Cart {
      * @return	int
      */
     public function total_items() {
+
         return $this->cart_contents['total_items'];
     }
 
@@ -53,6 +56,7 @@ class Cart {
      * @return	int
      */
     public function total() {
+
         return $this->cart_contents['cart_total'];
     }
 
@@ -152,7 +156,9 @@ class Cart {
      * @return	void
      */
     public function destroy() {
+
         $this->cart_contents = array('cart_total' => 0, 'total_items' => 0);
+
         unset($_SESSION['cart_contents']);
     }
 

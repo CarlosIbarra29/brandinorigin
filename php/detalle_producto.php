@@ -11,7 +11,6 @@ $tecnica = fnGetTecnica($id);
 ?>
 
 
-
 <div class="row">
 	<div class="col-sm-12 col-xs-12">
 
@@ -77,7 +76,12 @@ $tecnica = fnGetTecnica($id);
 							<?php else: ?>
 								<p>Area impresión: <?php print $v['area_impresion']; ?></p>
 							<?php endif ?>	
-							
+
+						<?php endforeach; ?>	
+
+
+
+						<?php if(isset($_SESSION['usuario'])):?>
 
 							<h6 style="color: red;"><b>*Revisa la(s) técnica(s) de IMPRESIÓN disponible(s), antes de elegir.</b></h6>
 
@@ -109,12 +113,18 @@ $tecnica = fnGetTecnica($id);
 						 			</tr>
 								</tbody>
 							</table>
-						<?php endforeach; ?>
+						
 
-							<form class="form-horizontal" action="./php/AccionCarta.php?id=<?php print $productos[0]['modelo']; ?>&action=addToCart&p=<?php print $precio ?>" method="POST">
+							<form class="form-horizontal" action="./php/AccionCarta.php?id=<?php print $productos[0]['modelo']; ?>&action=addToCart&p=
+
+							<?php print $precio ?>" method="POST">
+							
 								<div class="form-group">
+							
 									<label class="control-label col-sm-3" style="text-align: left">Técnica:</label>
+							
 									<div class="col-sm-5">          
+							
 										<select class="form-control" id="sel1" name="tecnica" id="primero" onchange="habilitar(this.value);">
 											<option></option>
 											<option>Sin técnica</option>
@@ -124,10 +134,15 @@ $tecnica = fnGetTecnica($id);
 											<option>GRABADO</option> 
 											<option>GRABADO LASER</option>
 										</select>
+							
 									</div>
+							
 								</div>
+							
 								<div class="form-group">        
+							
 									<label class="control-label col-sm-3" style="text-align: left">Tinta</label>
+							
 									<div class="col-sm-5">          
 										<select class="form-control" name="tinta" id="segundo" required="">
 											<option></option>
@@ -167,6 +182,21 @@ $tecnica = fnGetTecnica($id);
 										<button class="button" type="submit">Cotizar <span class="glyphicon glyphicon glyphicon-usd"></span></button>
 									</div>
 								</div>
+
+							<?php else:?>
+
+								<hr>
+
+								<h6 class="text-center" style="padding: 1%"><b> RECIBE NUESTRAS PROMOCIONES Y COTIZACIONES EN TU CORREO ELECTRÓNICO.</b></h6>
+
+								<div class="text-center">
+
+									<a class="button" href="./registro.php">Registrate</a>
+
+								</div>
+
+							<?php endif;?>
+
 							</form>
 						</div>
 					</div>

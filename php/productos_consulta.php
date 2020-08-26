@@ -1,5 +1,7 @@
 <?php
 
+
+
 include './funciones/cFunciones.php';
 
 $aDataProductos = fnGetproductosPrincipal();
@@ -7,8 +9,6 @@ $aDataProductos = fnGetproductosPrincipal();
 $categorias = fnGetCat_Pro();
 
 $banner= fnGetBanners();
-
-$articulos = $_GET['num_ar'];
 
 ?>
 
@@ -27,25 +27,47 @@ $articulos = $_GET['num_ar'];
 <div class="row">
 	
 	<h3 class="text-center">Productos relevantes.</h3><br>
+
 	<?php foreach ($aDataProductos as $k => $v):?>
-		<article class="col-md-2 col-sm-6 col-xs-6" style="padding: 1px 1px 1px;" >
+
+		<article class="col-md-3 col-sm-6 col-xs-6" style="padding: 1px 1px 1px;" >
+
 			<div class="row">
+
 				<div class="col-sm-12 text-center">
+
 					<a class="img-thumbnail" href="./vistaproducto.php?id=<?php echo $v['modelo']?>&img=<?php echo $v['modelo'] ?>&num_ar=<?php print $articulos?>" style="color: #fff; padding: 1%;" data-title="<?php echo $v['modelo'] ?>">	
-						<img  title="<?php echo $v['modelo']; ?>" alt="<?php echo $v['modelo']; ?>" src="<?php echo $v['img']; ?>" height="130px"><br><br>
-						<p class="productos" style="font-size: 15px"><b><?php $modelo = $v['modelo']; echo $modelo;?></b></p>
-						<br>
+
+						<img  title="<?php echo $v['modelo']; ?>" alt="<?php echo $v['modelo']; ?>" src="<?php echo $v['img']; ?>" height="130px">
+
+						<?php if(isset($_SESSION['usuario'])):?>
+
+							<p class="productos" style="font-size: 12px; color: red;"><b>$<?php print $v['precio'];?></b></p>
+
+						<?php endif;?>
+
 					</a>
+
 				</div>
+
 			</div>
+
 			<div class="row">
-				<div class="col-sm-12 text-center">
-					<form action="./vistaproducto.php?id=<?php echo $v['modelo'] ?>&img=<?php echo $v['modelo'] ?>&num_ar=<?php print $articulos?>" method="post"><br>
+
+				<div class="col-sm-12 text-center"><br>
+
+					<p class="productos" style="font-size: 10px"><b><?php print $v['nombre'];?></b></p>
+					
+					<form action="./vistaproducto.php?id=<?php echo $v['modelo'] ?>&img=<?php echo $v['modelo'] ?>" method="post">
+
 						<button class="btn btn-default" style="background-color:#3c3c3c; color: white">Cotizar</button>
-					</form>
-					<br>
+						
+					</form><br>
+
 				</div>
+
 			</div>
+
 		</article>
 	<?php endforeach;?>
 	</div>
