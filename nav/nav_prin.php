@@ -1,3 +1,10 @@
+<?php 
+
+    $_SESSION['nombre']; 
+    $_SESSION['usuario'];
+    $_SESSION['user_login_status'];
+
+?>
 
 
 <script>
@@ -25,15 +32,6 @@
     }
 </style>
 
-<?php
-include './php/session_start.php';
-
-$articulos = $_GET['num_ar'];
-$us= $_GET['us'];
-
-
-
-?>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -46,40 +44,42 @@ $us= $_GET['us'];
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="./index.php?num_ar=<?php echo $articulos ?>&us=<?php echo $us ?>">Inicio</a></li>
-                <li><a href="./nosotros.php?num_ar=<?php echo $articulos ?>&us=<?php echo $us ?>">Nosotros</a></li>
-                <li><a href="./productos.php?num_ar=<?php echo $articulos ?>&us=<?php echo $us ?>&productos=ALL">Productos</a></li>
+                <li><a href="./index.php">Inicio</a></li>
+                <li><a href="./nosotros.php">Nosotros</a></li>
+                <li><a href="./productos.php?productos=ALL">Productos</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Servicios
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a style="font-size: 11px" href="./event.php?num_ar=<?php echo $articulos ?>&us=<?php echo $us ?>">Event Marketing</a></li>
-                        <li><a style="font-size: 11px" href="./impresiones.php?num_ar=<?php echo $articulos ?>&us=<?php echo $us ?>">Impresiones</a></li>
-                        <li><a style="font-size: 11px" href="./stands.php?num_ar=<?php echo $articulos ?>&us=<?php echo $us ?>">Stands</a></li>
+                        <li><a style="font-size: 11px" href="./event.php">Event Marketing</a></li>
+                        <li><a style="font-size: 11px" href="./impresiones.php">Impresiones</a></li>
+                        <li><a style="font-size: 11px" href="./stands.php">Stands</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Catálogos
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a style="font-size: 11px" href="./catalogo.php?num_ar=<?php echo $articulos ?>&us=<?php echo $us ?>">Productos</a></li>
+                        <li><a style="font-size: 11px" href="./catalogo.php">Productos</a></li>
                     </ul>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
 
-                <li><a href="./php/VerCarta.php"><span class="glyphicon glyphicon-shopping-cart"></span> Ver cotización (<?php echo $articulos ?>) 
-                <?php
-                if ($us==""){
-                    
-                }else{
-                    echo '- Bienvenido '.$us;
-                    ?>
-                        <li><a href="./php/cerrar_sesion.php"><span class="glyphicon glyphicon-log-in"></span> Cerra Session</a></li>
-                        <?php
-                }
-                ?>
-                        
+                <?php if (isset($_SESSION['usuario'])):?>
+
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php print  strtoupper ($_SESSION['usuario']);?></a></li>
+
+                    <li><a href="./php/VerCarta.php"><span class="glyphicon glyphicon-shopping-cart"></span> Ver cotización (<?php print $_SESSION['num_articulos'] ?>)</a></li>
+
+                    <li><a href="./php/cerrar_sesion.php"><span class="glyphicon glyphicon-log-in"></span> Cerra Sesion</a></li>
+
+                <?php else:?>
+
+                    <li><a href="./registro.php"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesion</a></li>
+                
+                <?php endif;?>  
+
                 </a></li>
             </ul>
         </div>

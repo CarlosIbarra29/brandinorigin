@@ -415,7 +415,8 @@ function fnGetproductosPrincipal(){
     B.id_producto,
     A.precio,
     B.modelo,
-    B.img
+    B.img,
+    B.nombre
     FROM precios_promoopcion A 
     JOIN bran_productos B ON A.modelo = B.modelo
 
@@ -873,7 +874,6 @@ function fnGetCatalogos(){
 }
 
 
-
 function fnGetFiltroProductosCount($categoria,$precio1,$precio2,$color){
 
     $conexion_uno = fnConexion();
@@ -959,6 +959,102 @@ function fnGetColoresFiltro(){
     return $aResponse;
 
 }
+
+function getLogin($usuario,$password){
+
+    $conexion = fnConexion();
+
+    $aResponse = array();
+
+    $sql = "SELECT * FROM clientes WHERE email = '$usuario'";
+
+    $query = mysqli_query($conexion, $sql);
+
+    if(mysqli_num_rows($query)>0){
+
+        $row = mysqli_fetch_array($query);
+
+        if (password_verify($password,$row['password'] )){
+
+            session_start();
+
+            $aResponse['estatus'] = true;
+            $_SESSION['user_id'] = $row['id'] ;
+            $_SESSION['nombre'] = $row['nombre'];
+            $_SESSION['usuario'] = $row['usuario'];
+            $_SESSION['user_login_status'] = 1;
+
+        } else {
+
+            $aResponse['msj'] = "Usuario y/o contraseña no coinciden.";
+            $aResponse['estatus'] = false;
+
+        }
+
+    }else{
+
+        $aResponse['msj'] = "Usuario no registrado.";
+        $aResponse['estatus'] = false;
+
+
+    }
+
+    
+
+    return $aResponse;
+
+}
+
+function fnInsertUs($nombre,$apellidos,$email,$empresa,$password,$telefono,$cifrado){
+
+    $conexion = fnConexion();
+
+    $aResponse = array();
+
+    $sql_validate = "SELECT * FROM clientes WHERE email = '$email' ";
+
+    if($query_validate = mysqli_query($conexion, $sql_validate)){
+
+        if(mysqli_num_rows($query_validate)>0){
+
+            $aResponse['status_usuario'] = false;
+
+            $aResponse['msj'] = "El email ya se encuentra registrado.";
+
+        }else{
+
+            $sql = "INSERT INTO clientes (nombre,apellidos,email,telefono,status,password,empresa,password_text)
+
+            VALUES ('$nombre','$apellidos','$email','$telefono','1','$cifrado','$empresa',$password)";
+
+            $query = mysqli_query($conexion, $sql);
+
+            if ($query) {
+
+                $aResponse['status'] = true;
+
+                 $aResponse['msj'] = "Registro con exito.";
+
+            } else {
+
+                $aResponse['status'] = false;
+
+                 $aResponse['msj'] = "Hubo un error al registrarse.";
+
+            }
+
+        }
+
+    }
+
+    return $aResponse;
+
+}
+
+    
+
+
+
 
 
 

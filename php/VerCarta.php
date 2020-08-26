@@ -1,21 +1,21 @@
 <?php
 // initializ shopping cart class
+
+session_start();
+
 include 'La-carta.php';
 $cart = new Cart;
 
 
 $cartItems = $cart->contents();
+
 $ar = count($cartItems);
+
+$_SESSION['num_articulos'] = $ar;
+
 error_reporting(0);
 
-$nombre = $_GET['nombre'];
-$apellidos = $_GET['apellidos'];
-$email = $_GET['email'];
-$telefono = $_GET['telefono'];
 
-// include './session_start.php';
-
-$us = $_GET['us'];
 ?>
 
 <script>
@@ -193,7 +193,7 @@ $us = $_GET['us'];
 
                                 <tr>
                                     <td colspan="6">
-                                        <a href="../productos.php?us=<?php echo $us ?>&nombre=<?php echo $nombre ?>&email=<?php echo $email ?>&telefono=<?php echo $telefono ?>&apellidos=<?php echo $apellidos ?>&num_ar=<?php echo $ar ?>&productos=ALL" class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i>Regresar</a>
+                                        <a href="../productos.php?productos=ALL" class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i>Regresar</a>
                                     </td>
 
                                     <?php

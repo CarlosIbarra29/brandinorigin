@@ -1,28 +1,36 @@
 
 <?php 
 
-
 include './funciones/cFunciones.php';
 
-
 $v_clave = $_GET['palabra_clave'];
+
 $categorias = $_GET['categoria'];
+
 $productos = $_GET['productos'];
+
 $filtro = $_GET['filtro'];
+
 $colores_filtro= fnGetColoresFiltro();
+
 $categorias_filtro=fnGetCat_Pro();
 
 $num_pag = $_GET['pag'];
 
 if (isset($num_pag)) {
+
     $num_pag = $_GET['pag'];
+
 } else {
+
     $num_pag = 12;
+
 }
 
 $page = false;
 
 if (isset($_GET["page"])) {
+
     $page = $_GET["page"];
 }
 
@@ -69,20 +77,19 @@ endif;?>
 
 <?php if(isset($filtro)):
 
-
-
     $categoria=$_POST['categoria'];
+
     $precio1=$_POST['precio1'];
+
     $precio2=$_POST['precio2'];
+
     $color= $_POST['color']; 
 
+    $filtroBusqueda = fnGetFiltroProductosCount($categoria,$precio1,$precio2,$color);
 
-$filtroBusqueda = fnGetFiltroProductosCount($categoria,$precio1,$precio2,$color);
+    $num_total_rows= $filtroBusqueda[0]['TOTAL'];
 
-$num_total_rows= $filtroBusqueda[0]['TOTAL'];
-
-$result = fnGetFiltroProductos($categoria,$precio1,$precio2,$color,$start,$num_pag);
-
+    $result = fnGetFiltroProductos($categoria,$precio1,$precio2,$color,$start,$num_pag);
 
 
 endif;?>
@@ -165,25 +172,33 @@ endif;?>
 <div class="col-md-8 col-sm-12 col-xs-12 text-center">
     <articles class="row">
         <?php foreach ($result as $k => $v): ?>
-            <article class="col-md-3 col-sm-4 col-xs-6" style="padding: 1px 1px 1px;" >
+            <article class="col-md-4 col-sm-4 col-xs-6" style="padding: 1px 1px 1px;" >
                 <div class="row">
                     <div class="col-sm-12 text-center">
-                        <a class="img-thumbnail" href="./vistaproducto.php?id=<?php echo $v['modelo']?>&img=<?php echo $v['modelo'] ?>&num_ar=<?php print $articulos?>" style="color: #fff; padding: 1%;" data-title="<?php echo $v['modelo'] ?>">
-                            <img  title="<?php echo $v['modelo']; ?>" alt="<?php echo $v['modelo']; ?>" src="<?php echo $v['img']; ?>" height="130px"><br>
-                            <p class="productos">
-                                <b ><?php $modelo = $v['modelo']; echo $modelo;?></b>
-                            </p>
-                        </a>
+                        <a class="img-thumbnail" href="./vistaproducto.php?id=<?php echo $v['modelo']?>&img=<?php echo $v['modelo'] ?>" 
+                            style="color: #fff; padding: 1%;" data-title="<?php echo $v['modelo'] ?>">
+                            
+                            <img  title="<?php echo $v['modelo']; ?>" alt="<?php echo $v['modelo']; ?>" src="<?php echo $v['img']; ?>" height="130px">
+
+                            <?php if(isset($_SESSION['usuario'])):?>
+
+                                <p class="productos" style="font-size: 12px; color: red;"><b>$<?php print $v['precio'];?></b></p>
+
+                            <?php endif;?>
+                            
+                        </a><br>
                     </div>
                 </div>
                 <br>
 
                 <div class="row">
                     <div class="col-sm-12 text-center">
-                        <form action="./vistaproducto.php?id=<?php echo $v['modelo'] ?>&img=<?php echo $v['modelo'] ?>&num_ar=<?php print $articulos?>" method="post">
-                        <button class="btn btn-default" style="background-color:#3c3c3c; color: white">
-                            Cotizar
-                        </button>
+                         <p class="productos" style="font-size: 10px"><b>$<?php print $modelo = $v['nombre'];?></b></p>
+
+                        <form action="./vistaproducto.php?id=<?php echo $v['modelo'] ?>&img=<?php echo $v['modelo'] ?>" method="post">
+
+                            <button class="btn btn-default" style="background-color:#3c3c3c; color: white">Cotizar</button>
+
                         </form>
                         <br>
                     </div>
