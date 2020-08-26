@@ -49,6 +49,7 @@
                 <li><a href="./index.php">Inicio</a></li>
                 <li><a href="./nosotros.php">Nosotros</a></li>
                 <li><a href="./productos.php?productos=ALL">Productos</a></li>
+                <li><a href="./productos.php?categoria=SALUD">Aticulos Covid-19</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Servicios
                         <span class="caret"></span></a>
