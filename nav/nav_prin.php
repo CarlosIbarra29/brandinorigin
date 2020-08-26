@@ -4,6 +4,8 @@
     $_SESSION['usuario'];
     $_SESSION['user_login_status'];
 
+    error_reporting(0);
+
 ?>
 
 
