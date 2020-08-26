@@ -60,6 +60,8 @@ endif;?>
     $num_total_rows = $busqueda_categorias[0]['TOTAL'];
 
     $result = fnGetBusquedaCategorias($categorias,$start,$num_pag);
+
+    
     
 endif;?>
 
@@ -90,7 +92,6 @@ endif;?>
     $num_total_rows= $filtroBusqueda[0]['TOTAL'];
 
     $result = fnGetFiltroProductos($categoria,$precio1,$precio2,$color,$start,$num_pag);
-
 
 endif;?>
 
@@ -193,7 +194,7 @@ endif;?>
 
                 <div class="row">
                     <div class="col-sm-12 text-center">
-                         <p class="productos" style="font-size: 10px"><b>$<?php print $modelo = $v['nombre'];?></b></p>
+                         <p class="productos" style="font-size: 10px"><b><?php print $modelo = $v['nombre'];?></b></p>
 
                         <form action="./vistaproducto.php?id=<?php echo $v['modelo'] ?>&img=<?php echo $v['modelo'] ?>" method="post">
 

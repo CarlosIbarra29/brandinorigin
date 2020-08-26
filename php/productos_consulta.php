@@ -42,7 +42,7 @@ $banner= fnGetBanners();
 
 						<?php if(isset($_SESSION['usuario'])):?>
 
-							<p class="productos" style="font-size: 12px; color: red;"><b>$<?php print $v['precio'];?></b></p>
+							<p class="productos" style="font-size: 12px; color: red;"><b><?php print "$". $v['precio'];?></b></p>
 
 						<?php endif;?>
 
@@ -61,7 +61,7 @@ $banner= fnGetBanners();
 					<form action="./vistaproducto.php?id=<?php echo $v['modelo'] ?>&img=<?php echo $v['modelo'] ?>" method="post">
 
 						<button class="btn btn-default" style="background-color:#3c3c3c; color: white">Cotizar</button>
-						
+
 					</form><br>
 
 				</div>

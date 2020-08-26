@@ -740,7 +740,7 @@ function fnGetBusqueda($busqueda,$start,$num_pag){
             $sql="SELECT A.*,B.precio FROM bran_productos A
             INNER JOIN precios_promoopcion B ON A.modelo = B.modelo
             Where Match(A.id_producto,A.modelo,A.nombre,A.descripcion,A.categoria,A.color)
-            AGAINST('$busqueda') LIMIT  $start ,$num_pag;";
+            AGAINST('$busqueda')  LIMIT  $start ,$num_pag;";
 
         }
     }
@@ -797,10 +797,10 @@ function fnGetBusquedaCategorias($categorias,$start,$num_pag){
 
     $aResponse = array();
 
-     $sql="SELECT A.*,B.precio 
+    $sql="SELECT A.*,B.precio 
      FROM bran_productos A 
      LEFT JOIN precios_promoopcion B ON A.modelo = B.modelo  
-     WHERE A.categoria LIKE '%$categorias%' LIMIT  $start ,$num_pag";
+     WHERE A.categoria LIKE '%$categorias%' order by A.nombre LIMIT  $start ,$num_pag";
 
 
      if($query = mysqli_query($conexion_uno, $sql)){
@@ -914,7 +914,7 @@ function fnGetFiltroProductos($categoria,$precio1,$precio2,$color,$start,$num_pa
     FROM bran_productos A 
     JOIN precios_promoopcion B ON A.modelo = B.modelo  
     WHERE A.color LIKE '%$color%' AND B.precio between '$precio1' AND '$precio2' 
-    AND A.categoria = '$categoria' LIMIT $start, $num_pag;";
+    AND A.categoria LIKE '%$categoria%' order by A.nombre LIMIT $start, $num_pag;";
 
     if($query = mysqli_query($conexion_uno, $sql)){
 
