@@ -20,7 +20,7 @@ if($recupera['estatus']===true){
 	
 	$envio = envioMail($email,$asuntoText,$password,$nom);
 
-    header("location:/recupera.php?msj=$msj&status=$status");
+	header("location:/recupera.php?msj=$msj&status=$status");
 
 }else{
 
