@@ -1,6 +1,6 @@
 <?php
 
-$url = 'http://forpromotional.homelinux.com:9090/WsEstrategia/inventario';
+/*$url = 'http://forpromotional.homelinux.com:9090/WsEstrategia/inventario';
 
 //  Iniciamos curl
 $curl = curl_init();
@@ -18,4 +18,9 @@ $json = curl_exec( $curl );
 curl_close( $curl );
 $respuestas = json_decode( $json, true );
 
-var_dump( $respuestas );
+var_dump( $respuestas );*/
+
+
+$data = json_decode(file_get_contents('http://forpromotional.homelinux.com:9090/WsEstrategia/inventario'),true);
+
+var_dump($data);
