@@ -1095,7 +1095,7 @@ function fnGetRecupera($email){
 
 function envioMail($destinatario,$asuntoText,$pass,$nom){
 
-  $asunto = ".$asuntoText.";
+  $asunto = "Recuperar Contraseña";
   $cuerpo = "
 
     <!DOCTYPE html>
