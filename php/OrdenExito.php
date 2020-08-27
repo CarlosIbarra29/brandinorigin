@@ -1,5 +1,8 @@
 <?php
 
+
+
+
 if (!isset($_REQUEST['id'])) {
 
     header("Location: VerCarta.php");

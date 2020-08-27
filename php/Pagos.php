@@ -8,7 +8,7 @@ $cart = new Cart;
 
 // redirect to home if cart is empty
 if ($cart->total_items() <= 0) {
-    header("Location: index.php");
+   header("Location: index.php");
 }
 
 // set customer ID in session
@@ -16,12 +16,13 @@ $_SESSION['sessCustomerID'] = 1;
 
 
 
-$nombre = $_GET['nombre'];
-$apellidos = $_GET['apellidos'];
-$email = $_GET['email'];
-$telefono = $_GET['telefono'];
+$nombre =  $_SESSION['nombre']; 
+$email = $_SESSION['email'];
+$telefono = $_SESSION['telefono'];
 
 header("Location: AccionCarta.php?action=placeOrder&n=$nombre&e=$email&t=$telefono");
+
+///session_start();
 
 
 

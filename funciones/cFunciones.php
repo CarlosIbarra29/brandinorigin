@@ -983,6 +983,8 @@ function getLogin($usuario,$password){
             $_SESSION['user_id'] = $row['id'] ;
             $_SESSION['nombre'] = $row['nombre'];
             $_SESSION['usuario'] = $row['nombre'];
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['telefono'] = $row['telefono'];
             $_SESSION['user_login_status'] = 1;
 
         } else {

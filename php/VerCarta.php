@@ -203,8 +203,10 @@ error_reporting(0);
                                         <td colspan="2">
                                             <!-- <a href="Pagos.php" class="btn btn-success btn-block">Terminar Cotizacion</a>-->
                                             <!--<a href="" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">Terminar Cotizacion</a>-->
-                                            <!-- <a href="./Pagos.php?nombre=<?php //echo $nombre ?>&email=<?php //echo $email ?>&telefono=<?php //echo $telefono ?>&apellidos=<?php //echo $apellidos ?>" class="btn btn-success btn-block">Terminar Cotizacion</a>-->
-                                            <a href="../registro.php?num_ar=<?php echo $ar  ?>" class="btn btn-success btn-block">Terminar Cotizacion</a>
+                                            
+                                            <a href="./Pagos.php" class="btn btn-success btn-block">Terminar Cotizacion</a>
+
+                                        
                                         </td>
 
 
