@@ -39,6 +39,7 @@ $cotizaciones = fnGetCotizaciones($email);
                         <thead>
                             <tr>
                                 <th class="th-sm">Id Cotización</th>
+                                <th class="th-sm">Ver</th>
                                 <th class="th-sm">Fecha</th>
                             </tr>
                         </thead>
@@ -48,7 +49,8 @@ $cotizaciones = fnGetCotizaciones($email);
 
                                 <tr>
                                     <td><?php print $value['id']?></td>
-                                    <td><a href="php/descarga_cot.php?<?php print $value['id']?>" target="_blank">Descargar cotizacion.</a></td>
+                                    <td><a href="php/descarga_cot.php?<?php print $value['id']?>" target="_blank">Ver Ahora.</a></td>
+                                     <td><?php print $value['created']?></td>
 
                                 </tr>
 

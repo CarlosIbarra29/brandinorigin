@@ -71,14 +71,23 @@
 
                 <?php if (isset($_SESSION['usuario'])):?>
 
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php print  strtoupper ($_SESSION['usuario']);?></a></li>
+                    
 
                     <li><a href="./php/VerCarta.php"><span class="glyphicon glyphicon-shopping-cart"></span> Ver cotización (<?php print $_SESSION['num_articulos'] ?>)</a></li>
 
 
                     <li><a href="./cotizaciones.php">Cotización PDF</a></li>
 
-                    <li><a href="./php/cerrar_sesion.php"><span class="glyphicon glyphicon-log-in"></span> Cerra Sesion</a></li>
+                    
+
+                    <li class="dropdown"><a href="#"><span class="glyphicon glyphicon-user"></span> <?php print  strtoupper ($_SESSION['usuario']);?>   <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./php/cerrar_sesion.php"><span class="glyphicon glyphicon-log-in"></span> Cerra Sesion</a></li>
+                        </ul>
+
+
+                    </li>
+
 
                 <?php else:?>
 
