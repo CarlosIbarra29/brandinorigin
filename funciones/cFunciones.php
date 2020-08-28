@@ -1201,6 +1201,40 @@ function envioMail($destinatario,$asuntoText,$pass,$nom){
 
 
 
+function fnGetCotizaciones($email){
+
+    $conexion = fnConexion();
+
+    $aResponse = array();
+
+    $sql = "SELECT * FROM orden WHERE  correo ='$email'";
+
+    if($query = mysqli_query($conexion, $sql)){
+
+        if(mysqli_num_rows($query)>0){
+
+            while( $row = mysqli_fetch_array($query) ) { 
+
+                $aResponse[] = $row; 
+
+            }
+
+        }else{
+
+            $aResponse[]= "Sin cotizaciones";
+        }
+
+    }
+
+    return $aResponse;
+
+
+
+
+}
+
+
+
 
 
     

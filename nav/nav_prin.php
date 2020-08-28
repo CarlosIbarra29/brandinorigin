@@ -75,6 +75,9 @@
 
                     <li><a href="./php/VerCarta.php"><span class="glyphicon glyphicon-shopping-cart"></span> Ver cotización (<?php print $_SESSION['num_articulos'] ?>)</a></li>
 
+
+                    <li><a href="./cotizaciones.php">Cotización PDF</a></li>
+
                     <li><a href="./php/cerrar_sesion.php"><span class="glyphicon glyphicon-log-in"></span> Cerra Sesion</a></li>
 
                 <?php else:?>

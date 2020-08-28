@@ -21,6 +21,8 @@ $respuestas = json_decode( $json, true );
 var_dump( $respuestas );*/
 
 
-$data = json_decode(file_get_contents('http://forpromotional.homelinux.com:9090/WsEstrategia/inventario'),true);
+//$data = json_decode(file_get_contents('http://forpromotional.homelinux.com:9090/WsEstrategia/inventario'),true);
 
-var_dump($data);
+///var_dump($data);
+
+phpinfo();
