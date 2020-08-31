@@ -49,7 +49,7 @@ $cotizaciones = fnGetCotizaciones($email);
 
                                 <tr>
                                     <td><?php print $value['id']?></td>
-                                    <td><a href="php/descarga_cot.php?<?php print $value['id']?>" target="_blank">Ver Ahora.</a></td>
+                                    <td><a href="php/descarga_cot.php?id=<?php print $value['id']?>" target="_blank">Ver Ahora.</a></td>
                                      <td><?php print $value['created']?></td>
 
                                 </tr>
