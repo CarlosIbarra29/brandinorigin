@@ -38,14 +38,20 @@ $catalogo_get= fnGetCatalogos();
 
                     <div id="busquedas" class="collapse"><br>
 
-                        <div class="col-md-6 col-sm-6 col-xs-6 text-center">
-                            <a style="font-size: 11px" href="https://online.flippingbook.com/view/925396/" target="_blank">
+                        <div class="col-md-4 col-sm-4 col-xs-4 text-center">
+                            <a style="font-size: 11px" href="https://online.flippingbook.com/view/966754/" target="_blank">
                                 <button class="btn btn-danger" style="font-size: 9px"><b>Catalogo 1</b>
                                 </button>
                             </a>
                         </div>
-                        <div class="col-md-6 col-sm-6 col-xs-6 text-center">
-                            <a style="font-size: 11px" href="http://promocionalesweb.com/CATALOGO_PROMOCIONALES_2020_2021/index.html#I" target="_blank">
+                        <div class="col-md-4 col-sm-4 col-xs-4 text-center">
+                            <a style="font-size: 11px" href="https://catalogos.promocionalesenlinea.com/view/669118/" target="_blank">
+                                <button class="btn btn-danger" style="font-size: 9px"><b>Catalogo 2</b>
+                                </button>
+                            </a>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4 text-center">
+                            <a style="font-size: 11px" href="http://www.doblevela.com/catalogovirtual_sinlogo/files/assets/basic-html/page-I.html#" target="_blank">
                                 <button class="btn btn-danger" style="font-size: 9px"><b>Catalogo 3</b>
                                 </button>
                             </a>
