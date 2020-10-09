@@ -1,27 +1,39 @@
 <?php
 
-/*$url = 'http://forpromotional.homelinux.com:9090/WsEstrategia/inventario';
-
-//  Iniciamos curl
-$curl = curl_init();
-// Desactivamos verificación SSL
-curl_setopt( $curl, CURLOPT_SSL_VERIFYPEER, 0 );
-// Devuelve respuesta aunque sea falsa
-curl_setopt( $curl, CURLOPT_RETURNTRANSFER, 1 );
-// Especificamo los MIME-Type que son aceptables para la respuesta.
-curl_setopt( $curl, CURLOPT_HTTPHEADER, [ 'Accept: application/json' ] );
-// Establecemos la URL
-curl_setopt( $curl, CURLOPT_URL, $url );
-// Ejecutmos curl
-$json = curl_exec( $curl );
-// Cerramos curl
-curl_close( $curl );
-$respuestas = json_decode( $json, true );
-
-var_dump( $respuestas );*/
 
 
-$data = json_decode(file_get_contents('https://4promotional.net:9090/WsEstrategia/inventario'),true);
+$arrContextOptions=array(
+    "ssl"=>array(
+        "verify_peer"=>false,
+        "verify_peer_name"=>false,
+    ),
+); 
 
-var_dump($data);
+$data = file_get_contents("https://4promotional.net:9090/WsEstrategia/inventario", false, stream_context_create($arrContextOptions));
+
+
+
+// var_dump($data);
+
+$obj = json_decode($data, true);
+
+$producto = 3551;
+
+?>
+
+<?php for($i=0;$i<count($obj);$i++):?>
+
+                            <?php if ($obj[$i]['id_articulo'] == $producto):?>
+
+                                <tr>
+
+                                    <td><?php print $obj[$i]["color"]?></td>
+
+                                    <td><?php print number_format($obj[$i]['disponible'])?></td>
+
+                                </tr>
+
+                            <?php endif;?>    
+
+                        <?php endfor;?>
 

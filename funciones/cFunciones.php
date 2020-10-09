@@ -416,7 +416,8 @@ function fnGetproductosPrincipal(){
     A.precio,
     B.modelo,
     B.img,
-    B.nombre
+    B.nombre,
+    B.importadora
     FROM precios_promoopcion A 
     JOIN bran_productos B ON A.modelo = B.modelo
 

@@ -164,10 +164,20 @@ if ($importadora == 'promoopcion'){
 
                 <?php
 
-                $data = json_decode(file_get_contents('https://4promotional.net:9090/WsEstrategia/inventario'),true);
+                // $data = json_decode(file_get_contents('https://4promotional.net:9090/WsEstrategia/inventario'),true);
+
+                $arrContextOptions=array("ssl"=>array("verify_peer"=>false,"verify_peer_name"=>false,),); 
+
+                $jsonData = file_get_contents("https://4promotional.net:9090/WsEstrategia/inventario", false, stream_context_create($arrContextOptions));
+
+                $data = json_decode($jsonData,true);
+                
                 $producto = $imagen[0]['modelo'];
+                
                 $precio_for= $data[0]["precio"];
+                
                 $descripcion_for = $data[0]["descripcion"];
+
 
                 ?>
 
@@ -192,12 +202,19 @@ if ($importadora == 'promoopcion'){
                     </thead>
                     <tbody>
                         <?php for($i=0;$i<count($data);$i++):?>
+
                             <?php if ($data[$i]['id_articulo'] == $producto):?>
+
                                 <tr>
+
                                     <td><?php print $data[$i]["color"]?></td>
+
                                     <td><?php print number_format($data[$i]['disponible'])?></td>
+
                                 </tr>
+
                             <?php endif;?>    
+
                         <?php endfor;?>
                     </tbody>
                 </table>
