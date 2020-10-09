@@ -6,9 +6,7 @@ include './libreria/lib/nusoap.php';
 $CardCode = 'DFE5737';
 
 $key = 'jk3CttIRpY9ePAOmlX82ZA==';
-
-
-
+        
 $id_img= $_GET['img'];
 
 $imagen = fnGetImg($id_img);
@@ -24,6 +22,7 @@ if ($importadora == 'promoopcion'){
     $client = new nusoap_client('http://srv-datos.dyndns.info/doblevela/service.asmx?wsdl','wsdl');
     
 }
+
 
 ?>
 
@@ -120,9 +119,12 @@ if ($importadora == 'promoopcion'){
 
                 <?php foreach ($imagen as $k => $v):?>
 
+                    <?php $sUrl= str_replace("png", "jpg", $v['img']); ?>
+
                     <div class="w3-third" style="padding: 1%; cursor: pointer">
                         <div class="w3-card">
-                            <img src="<?php print $v['img']; ?>" style="width:80%;"/>
+                            <img src="<?php print $sUrl; ?>" style="width:80%;"/>
+                            sdasda
                         </div>
                     </div>
 
@@ -162,7 +164,7 @@ if ($importadora == 'promoopcion'){
 
                 <?php
 
-                $data = json_decode(file_get_contents('http://forpromotional.homelinux.com:9090/WsEstrategia/inventario'),true);
+                $data = json_decode(file_get_contents('https://4promotional.net:9090/WsEstrategia/inventario'),true);
                 $producto = $imagen[0]['modelo'];
                 $precio_for= $data[0]["precio"];
                 $descripcion_for = $data[0]["descripcion"];
@@ -171,9 +173,11 @@ if ($importadora == 'promoopcion'){
 
                 <?php foreach ($imagen as $k => $v):?>
 
+                    <?php $sUrl= str_replace("http://forpromotional.homelinux.com:9090/", "https://4promotional.net:9090/", $v['img']); ?>
+
                     <div class="w3-third" style="padding: 1%; cursor: pointer">
                         <div class="w3-card">
-                            <img src="<?php print $v['img']; ?>" style="width:80%;"/>
+                            <img src="<?php print $sUrl; ?>" style="width:80%;"/>
                         </div>
                     </div>
 
@@ -204,7 +208,6 @@ if ($importadora == 'promoopcion'){
     </div>
 
 <?php endif; ?>    
-
 
 
 <script>

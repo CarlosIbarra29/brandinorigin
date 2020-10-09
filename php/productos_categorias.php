@@ -35,10 +35,15 @@ if (isset($_GET["page"])) {
 }
 
 if (!$page) {
+
     $start = 0;
+
     $page = 1;
+
 } else {
+
     $start = ($page - 1) * $num_pag;
+
 }
 
 
@@ -173,13 +178,32 @@ endif;?>
 <div class="col-md-8 col-sm-12 col-xs-12 text-center">
     <articles class="row">
         <?php foreach ($result as $k => $v): ?>
+
+            <?php
+
+            if ($v['importadora'] == "doblevela"){
+
+                $sUrl= str_replace("png", "jpg", $v['img']);
+
+            }elseif ($v['importadora'] == "forpromotional"){
+
+                $sUrl= str_replace("http://forpromotional.homelinux.com:9090/", "https://4promotional.net:9090/", $v['img']);
+
+            }else if ($v['importadora'] == 'promoopcion'){
+
+                $sUrl= $v['img'];
+
+            }
+
+            ?>
             <article class="col-md-4 col-sm-4 col-xs-6" style="padding: 1px 1px 1px;" >
                 <div class="row">
+
                     <div class="col-sm-12 text-center">
                         <a class="img-thumbnail" href="./vistaproducto.php?id=<?php echo $v['modelo']?>&img=<?php echo $v['modelo'] ?>" 
                             style="color: #fff; padding: 1%;" data-title="<?php echo $v['modelo'] ?>">
                             
-                            <img  title="<?php echo $v['modelo']; ?>" alt="<?php echo $v['modelo']; ?>" src="<?php echo $v['img']; ?>" height="130px">
+                            <img  title="<?php echo $v['modelo']; ?>" alt="<?php echo $v['modelo']; ?>" src="<?php print $sUrl; ?>" height="130px">
 
                             <?php if(isset($_SESSION['usuario'])):?>
 
