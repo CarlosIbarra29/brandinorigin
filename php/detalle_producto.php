@@ -28,16 +28,19 @@ $tecnica = fnGetTecnica($id);
 						if ($productos[0]['importadora']=='forpromotional'){
 
 							$precio = $precio_for;
+
 							$descripcion = $descripcion_for;
 
 						}elseif ($productos[0]['importadora']=='doblevela') {
 
 							$precio= $precios_doblevela;
+
 							$descripcion= $descripcion_doblevela;
 							
 						}elseif ($productos[0]['importadora']=='promoopcion') {
 
 							$precio =$productos[0]['precio'];
+
 							$descripcion = $productos[0]['descripcion'];
 							
 						}

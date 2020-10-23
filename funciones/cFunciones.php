@@ -37,149 +37,239 @@ function fnPrecios($tecnica,$productID,$unidades,$precio_inicio){
 	$conexion = fnConexion();
 
     if ($tecnica == "Sin técnica") {//sin tecnica
+
     	$color = "sin color";
+
     	$tinta = "sin tinta";
+
     	$ctinta = 0;
+
     	$ctecnica = 0;
+
     	if ($unidades <= 100) {
+
     		$calculo_p = $precio_inicio / 0.7;
+
     		$precio_utilidad = $calculo_p * $unidades;
+
     	} else if ($unidades >= 101 && $unidades <= 500) {
+
     		$calculo_p = number_format($precio_inicio / 0.75, 3);
+
     		$precio_utilidad = $calculo_p * $unidades;
+
     	} else if ($unidades >= 501 && $unidades <= 3000) {
+
     		$calculo_p = number_format($precio_inicio / 0.8, 3);
+
     		$precio_utilidad = $calculo_p * $unidades;
+
     	} else if ($unidades >= 3001) {
+
     		$calculo_p = number_format($precio_inicio / 0.85, 3);
+
     		$precio_utilidad = $calculo_p * $unidades;
+
     	}
+
     	$calculo_total = $precio_utilidad;
+
     } else if ($tecnica == "SERIGRAFIA") {
+
     	$color = $_POST['color'];
+
     	$tinta = $_POST['tinta'];
 
     	if ($unidades <= 100) {
+
     		$ctecnica = 450/0.7;
+
     		$calculo_p = $precio_inicio / 0.7;
+
     		$punidades = $calculo_p * $unidades;
+
     		if ($tinta == 1) {
+
     			$n_tinta = 450/0.7;
+
     			$e_tinta = 0;
+
     			$ctinta = 0;
+
     		} else if ($tinta > 1) {
+
     			$ctinta = 385/0.7;
+
     			$n_tinta = 450/0.7;
+
     			$e_tinta = ((385/0.7) * ($tinta - 1));
+
     		}
+
     		$calculo_total = $punidades + $n_tinta + $e_tinta;
+
     	} else if ($unidades >= 101 && $unidades <= 500) {
+
 
     		$ctecnica = 4.50/0.75;
 
     		$calculo_p = $precio_inicio / 0.75;
+
     		$punidades = $calculo_p * $unidades;
 
     		if ($tinta == 1) {
+
     			$n_tinta = (4.50/0.75) * $unidades;
+
     			$e_tinta = 0;
+
     			$ctinta = 0;
+
     		} else if ($tinta > 1) {
+
     			$ctinta = 2.10/0.75;
+
     			$n_tinta = (4.50/0.75) * $unidades;
+
     			$e_tinta = ((2.10/0.75) * ($tinta - 1)) * $unidades;
+
     		}
+
     		$calculo_total = $punidades + $n_tinta + $e_tinta;
 
 
     	} 
 
     	else if ($unidades >= 501 && $unidades <= 3000) {
+
     		$ctecnica = 2.50/0.8;
 
     		$calculo_p = $precio_inicio / 0.8;
+
     		$punidades = $calculo_p * $unidades;
 
     		if ($tinta == 1) {
+
     			$n_tinta = (2.5/0.8) * $unidades;
+
     			$e_tinta = 0;
+
     			$ctinta = 0;
+
     		} else if ($tinta > 1) {
+
     			$ctinta = 1.16/0.8;
+
     			$n_tinta = (2.5/0.80) * $unidades;
+
     			$e_tinta = ((1.16/.80) * ($tinta - 1)) * $unidades;
+
     		}
+
     		$calculo_total = $punidades + $n_tinta + $e_tinta;
 
     	} 
 
     	else if ($unidades >= 3001) {
+
     		$ctecnica = 2.00/0.85;
 
     		$calculo_p = $precio_inicio / 0.85;
+
     		$punidades = $calculo_p * $unidades;
 
     		if ($tinta == 1) {
+
     			$n_tinta = (2/0.85) * $unidades;
+
     			$e_tinta = 0;
+
     			$ctinta = 0;
+
     		} else if ($tinta > 1) {
+
     			$ctinta = 0.95/0.85;
+
     			$n_tinta = (2/0.85) * $unidades;
+
     			$e_tinta = ((0.95/0.85) * ($tinta - 1)) * $unidades;
+
     		}
+
     		$calculo_total = $punidades + $n_tinta + $e_tinta;
+
     	}
     } else if ($tecnica == 'TAMPOGRAFIA') {
 
     	$color = $_POST['color'];
+
     	$tinta = $_POST['tinta'];
+
     	if ($unidades <= 100) {
+
     		$ctecnica = 600/0.7;
 
-
     		$calculo_p = $precio_inicio / 0.7;
+
     		$punidades = $calculo_p * $unidades;
 
     		if ($tinta == 1) {
+
     			$n_tinta = 600/0.7;
+
     			$e_tinta = 0;
+
     			$ctinta = 0;
+
     		} else if ($tinta > 1) {
+
     			$ctinta = 600/0.7;
+
     			$n_tinta = 600/0.7;
+
     			$e_tinta = (600/0.7) * ($tinta - 1);
     		}
+
     		$calculo_total = $punidades + $n_tinta + $e_tinta;
     	} 
 
     	else if ($unidades >= 101 && $unidades <= 500) {
     		$ctecnica = 0.60/0.75;
 
-
-
     		$calculo_p = $precio_inicio / 0.75;
+
     		$punidades = $calculo_p * $unidades;
+
     		$precio_placa = 200;
 
     		if ($tinta == 1) {
+
     			$n_tinta = (0.60/0.75) * $unidades;
+
     			$e_tinta = 0;
+
     			$ctinta = 0;
+
     		} else if ($tinta > 1) {
+
     			$ctinta = 0.60/0.75;
+
     			$n_tinta = (0.60/0.75) * $unidades;
+
     			$e_tinta = ((0.60/0.75) * ($tinta - 1)) * $unidades;
     		}
+
     		$calculo_total = $punidades + $n_tinta + $e_tinta + $precio_placa;
     	}
 
     	else if ($unidades >= 501 && $unidades <= 3000) {
+
     		$ctecnica = 0.55/0.8;
 
-
     		$calculo_p = $precio_inicio / 0.8;
+
     		$punidades = $calculo_p * $unidades;
+
     		$precio_placa = 0;
     		if ($tinta == 1) {
     			$n_tinta = (0.55/0.80) * $unidades;
@@ -501,6 +591,38 @@ function fnGetImg($id_img){
 
 
 function fnGetproducto($id){
+
+    $conexion_uno = fnConexion();
+
+    $aResponse = array();
+
+    $sql ="SELECT B.*,
+    A.precio
+
+    FROM precios_promoopcion A 
+    JOIN bran_productos B ON A.modelo = B.modelo
+
+    WHERE B.modelo ='$id'  limit 1";
+
+    if($query = mysqli_query($conexion_uno, $sql)){
+
+        if(mysqli_num_rows($query)>0){
+
+            while( $row = mysqli_fetch_array($query) ) { 
+
+                $aResponse[] = $row; 
+
+            }
+
+        }
+
+    }
+
+    return $aResponse;
+
+}
+
+function fnGetproductoDistinct($id){
 
     $conexion_uno = fnConexion();
 

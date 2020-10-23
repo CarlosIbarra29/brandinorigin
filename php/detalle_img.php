@@ -6,6 +6,8 @@ include './libreria/lib/nusoap.php';
 $CardCode = 'DFE5737';
 
 $key = 'jk3CttIRpY9ePAOmlX82ZA==';
+
+$idArticuloforpormotional = fnGetproductoDistinct($id);
         
 $id_img= $_GET['img'];
 
@@ -139,9 +141,6 @@ if ($importadora == 'promoopcion'){
                     </thead>
                     <tbody>
                         <?php for($i=0;$i<count($jsonExis);$i++):?>
-
-                           
-                            
                             <tr>
                                 <td><?php print $jsonExis[$i]->{'COLOR'}?></td>
                                 <td><?php print number_format($jsonExis[$i]->{'EXISTENCIAS'})?></td>
@@ -174,12 +173,27 @@ if ($importadora == 'promoopcion'){
                 
                 $producto = $imagen[0]['modelo'];
                 
-                $precio_for= $data[0]["precio"];
+                $precio_for = $data[0]["precio"];
                 
                 $descripcion_for = $data[0]["descripcion"];
 
+                $idArticulo = $idArticuloforpormotional[0]['id_producto'];
+
+                foreach ($data as $key => $value) {
+
+                    if ($value['id_articulo'] == $idArticulo){
+
+                        $descripcion_for = $value['descripcion'];
+
+                        $precio_for = $value['precio'];
+                    } 
+
+                }
 
                 ?>
+
+
+                
 
                 <?php foreach ($imagen as $k => $v):?>
 
